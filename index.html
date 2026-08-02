@@ -152,11 +152,14 @@
         .kapak-icerik { width: min(1220px, 100%); }
         .ust-yazi {
             display: flex; align-items: center; justify-content: center; gap: 18px;
-            margin-bottom: 24px; color: #f1dfbd; font-family: var(--font-metin);
-            font-size: 16px; font-weight: 600; letter-spacing: 8px; line-height: 1; text-transform: uppercase; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+            margin-bottom: 24px; color: #fdf1d9; /* Biraz daha parlak, göz alıcı bir renk */
+            font-family: var(--font-metin);
+            font-size: 19px; /* 16px'ten 19px'e büyüttük */
+            font-weight: 700; /* Yazıyı daha dolgun yaptık */
+            letter-spacing: 10px; /* Harf aralarını açıp premium hissini koruduk */
+            line-height: 1; text-transform: uppercase; 
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45); /* Arka plandan net kopsun diye gölgeyi belirginleştirdik */
         }
-        .ust-yazi::before, .ust-yazi::after { content: ""; width: 62px; height: 1px; background: linear-gradient(to right, transparent, rgba(241, 223, 189, 0.95)); }
-        .ust-yazi::after { background: linear-gradient(to left, transparent, rgba(241, 223, 189, 0.95)); }
         
         .kapak h1 {
             margin: 0; font-family: var(--font-baslik); font-size: clamp(62px, 6.2vw, 96px);
