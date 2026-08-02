@@ -155,14 +155,14 @@
         .kapak-icerik { width: min(1220px, 100%); }
         .ust-yazi {
             display: flex; align-items: center; justify-content: center; gap: 15px;
-            margin-bottom: 10px; /* İsimlere biraz daha yakın, sıcak bir duruş */
-            color: #ead4aa; /* Zarif şampanya/altın tonu */
-            font-family: 'Great Vibes', cursive; /* Yeni kaligrafi fontumuz */
-            font-size: 44px; /* Kaligrafi fontları küçük durduğu için büyük bir değer girdik */
-            font-weight: 400; /* Kaligrafi zarif kalmalı, kalınlaştırmıyoruz */
-            letter-spacing: 1px; /* Harflerin birbirine bağlanması için aralığı kıstık */
+            margin-bottom: 10px; 
+            color: #ead4aa; 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 52px; /* 44px'ten 52px'e çıkardık, kıvrımlar rahatladı */
+            font-weight: 400; 
+            letter-spacing: 2px; /* 1px'ten 2px'e çıkardık. Daha fazlası harfleri koparır! */
             line-height: 1; 
-            text-transform: none; /* Büyük harf zorlamasını iptal ettik */
+            text-transform: none; 
             text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
         }
 
@@ -283,10 +283,10 @@
     
     /* Evleniyoruz Kaligrafi - Mobil Ayarı */
     .ust-yazi {
-        gap: 12px;
-        font-size: 34px;
-        letter-spacing: 1px;
-    }
+                gap: 12px;
+                font-size: 40px; /* Mobilde de 34px'ten 40px'e çıkardık */
+                letter-spacing: 2px;
+            }
     .ust-yazi::before, .ust-yazi::after {
         width: 40px;
     }
