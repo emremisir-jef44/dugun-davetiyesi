@@ -47,80 +47,73 @@
         }
         body.kilitli { overflow: hidden; }
 
-        /* AÇILIŞ EKRANI VE ÇİÇEKLİ ARKA PLAN */
+        /* AÇILIŞ EKRANI */
         .acilis-ekrani {
             position: fixed; inset: 0; z-index: 9999;
             display: flex; align-items: center; justify-content: center;
-            /* Buraya kendi yeşilli/çiçekli arkaplan resmini ekleyebilirsin. Şimdilik zarif bir yeşil degrade var: */
-            background: linear-gradient(135deg, #e4efe7 0%, #c4d7cb 100%);
-            transition: opacity 1s ease, visibility 1s ease;
-            cursor: pointer; /* Tüm ekran tıklanabilir oldu */
-            overflow: hidden;
+            padding: 20px;
+            background: radial-gradient(circle at top left, #eadcc8, transparent 42%),
+                        radial-gradient(circle at bottom right, #d6e1d7, transparent 42%),
+                        var(--krem);
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
         .acilis-ekrani.gizli { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        /* UÇAN KUŞLAR ANİMASYONU */
-        .kus { position: absolute; font-size: 24px; opacity: 0.7; }
-        .kus-1 { top: 20%; left: -50px; animation: ucma 15s linear infinite; }
-        .kus-2 { top: 10%; left: -100px; animation: ucma 20s linear infinite 5s; font-size: 18px; }
-        .kus-3 { top: 35%; left: -80px; animation: ucma 18s linear infinite 2s; font-size: 20px; }
-        @keyframes ucma {
-            0% { transform: translateX(0) translateY(0) scaleX(-1); }
-            50% { transform: translateX(50vw) translateY(-20px) scaleX(-1); }
-            100% { transform: translateX(120vw) translateY(-40px) scaleX(-1); }
-        }
-
-        /* ANİMASYONLU ZARF TASARIMI */
-        .zarf-kapsayici { position: relative; display: flex; flex-direction: column; align-items: center; }
-        .zarf { position: relative; width: 320px; height: 200px; margin-top: 50px; }
         
-        .zarf-arka { position: absolute; inset: 0; background-color: #d1c0a8; border-radius: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        /* Yeni Buzlu Cam (Glassmorphism) Efektli Kart */
+        .karsilama-karti {
+            width: min(430px, 100%); 
+            padding: 55px 35px; 
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.65); /* Arka planı hafif şeffaflaştırdık */
+            backdrop-filter: blur(12px); /* Buzlu cam efekti veren sihirli kod */
+            -webkit-backdrop-filter: blur(12px); /* Safari (iPhone) uyumluluğu */
+            border: 1px solid rgba(173, 145, 96, 0.4); /* Zarif altın sarısı ince kenarlık */
+            border-radius: 12px; /* Köşeleri daha keskin/matbaa tarzı yaptık */
+            box-shadow: 0 30px 60px rgba(45, 57, 48, 0.12), 
+                        inset 0 0 20px rgba(255, 255, 255, 0.5); /* İçeriye hafif bir ışık yansıması */
+        }
         
-        .mektup { 
-            position: absolute; left: 10px; right: 10px; bottom: 10px; height: 180px; 
-            background-color: white; border-radius: 5px; display: flex; flex-direction: column; 
-            align-items: center; padding-top: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transition: transform 0.8s ease-in-out; /* Mektup çıkma hızı */
-            z-index: 1;
+        /* A & Z Monogram Tasarımı */
+        .monogram {
+            font-family: var(--font-baslik);
+            font-size: 56px;
+            color: var(--altin);
+            margin-bottom: 12px;
+            line-height: 1;
+            letter-spacing: 2px;
         }
-        .mektup-baslik { font-family: var(--font-baslik); font-size: 38px; color: var(--altin); }
-        .mektup-tarih { font-size: 11px; letter-spacing: 3px; color: var(--gri); margin-top: 10px; }
-
-        .zarf-on {
-            position: absolute; inset: 0; z-index: 2;
-            border-left: 160px solid #e2d1bb;
-            border-right: 160px solid #e2d1bb;
-            border-bottom: 100px solid #dbc8b1;
-            border-top: 100px solid transparent;
-            border-radius: 0 0 5px 5px;
+        
+        .monogram-amp {
+            font-size: 42px;
+            color: var(--koyu-yesil);
+            font-style: italic;
+            font-weight: 400;
         }
 
-        .zarf-kapak {
-            position: absolute; top: 0; left: 0; z-index: 3;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-top: 110px solid #cbb8a0;
-            border-bottom: 90px solid transparent;
-            transform-origin: top;
-            transition: transform 0.6s ease-in-out, z-index 0s 0.3s;
+        .karsilama-tarih {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gri);
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
-        /* MÜHÜR TASARIMI */
-        .muhur {
-            position: absolute; left: -25px; top: -130px; width: 50px; height: 50px;
-            background-color: #a33a3a; /* Bordo mühür rengi */
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: #f7ddb0; font-family: var(--font-baslik); font-size: 16px; font-weight: bold;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+        .karsilama-karti h1 { 
+            margin: 0 0 15px; 
+            font-family: var(--font-baslik); 
+            font-size: 32px; 
+            font-weight: 500; 
+            color: var(--koyu-yesil); 
+            letter-spacing: -0.5px;
         }
-
-        .dokun-yazisi { margin-top: 30px; color: #405445; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; animation: yanSon 2s infinite; }
-        @keyframes yanSon { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-
-        /* ZARF AÇILMA ANİMASYONU (JS İLE TETİKLENİR) */
-        .zarf-kapsayici.acik .zarf-kapak { transform: rotateX(180deg); z-index: 0; }
-        .zarf-kapsayici.acik .muhur { opacity: 0; transition: opacity 0.2s; }
-        .zarf-kapsayici.acik .mektup { transform: translateY(-80px); z-index: 3; transition-delay: 0.4s; }
+        
+        .karsilama-karti p { 
+            margin: 0 0 30px; 
+            color: var(--gri); 
+            font-size: 15px;
+            line-height: 1.8;
+        }
 
         /* BUTONLAR */
         .buton {
@@ -358,24 +351,16 @@
 
     <!-- AÇILIŞ EKRANI -->
     <div class="acilis-ekrani" id="acilisEkrani">
-        <!-- CSS ile uçan kuşlar -->
-        <div class="kus kus-1">🕊️</div>
-        <div class="kus kus-2">🕊️</div>
-        <div class="kus kus-3">🕊️</div>
-
-        <div class="zarf-kapsayici" id="zarfKapsayici">
-            <div class="zarf">
-                <div class="zarf-arka"></div>
-                <div class="mektup">
-                    <div class="mektup-baslik">A <span style="color:var(--koyu-yesil); font-style:italic;">&amp;</span> Z</div>
-                    <div class="mektup-tarih">6 MART 2027</div>
-                </div>
-                <div class="zarf-on"></div>
-                <div class="zarf-kapak">
-                    <div class="muhur">A&Z</div>
-                </div>
-            </div>
-            <p class="dokun-yazisi">Zarfı açmak için ekrana dokunun</p>
+        <div class="karsilama-karti">
+            <div class="monogram">A <span class="monogram-amp">&amp;</span> Z</div>
+            
+            <div class="karsilama-tarih">6 Mart 2027</div>
+            
+            <h1>Size özel bir davetimiz var</h1>
+            
+            <p>Mutluluğumuzu paylaşmanız ve<br>bu özel günümüze tanıklık etmeniz dileğiyle...</p>
+            
+            <button class="buton" id="davetiAc">Daveti Aç</button>
         </div>
     </div>
 
@@ -631,26 +616,26 @@
             caliyorMu = !caliyorMu;
         });
 
-        // DAVETİ AÇMA (İNTERAKTİF ZARF)
+        // DAVETİ AÇMA
+        const davetiAcButonu = document.getElementById("davetiAc");
         const acilisEkrani = document.getElementById("acilisEkrani");
-        const zarfKapsayici = document.getElementById("zarfKapsayici");
 
-        acilisEkrani.addEventListener("click", function () {
-            // Ekrana tıklandığında önce zarfın "açık" animasyonunu tetikle
-            zarfKapsayici.classList.add("acik");
+        davetiAcButonu.addEventListener("click", function () {
+            // Tarayıcıyı anında en üste sabitler
+            window.scrollTo({ top: 0, behavior: 'instant' });
+
+            acilisEkrani.classList.add("gizli");
+            document.body.classList.remove("kilitli");
             
-            // Müziği hemen başlat
+            // 🌟 YENİ: Daveti aç butonuna tıklandığında müziği otomatik başlat
             muzik.play().then(() => {
                 muzikButonu.classList.add("caliyor");
                 caliyorMu = true;
-            }).catch(hata => console.log("Otomatik oynatma engellendi."));
-
-            // Zarf açıldıktan 2.5 saniye (2500ms) sonra ekranı yavaşça kaybet ve siteye gir
-            setTimeout(() => {
-                acilisEkrani.classList.add("gizli");
-                document.body.classList.remove("kilitli");
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            }, 2500);
+            }).catch(hata => {
+                // Eğer kullanıcının tarayıcısı aşırı katı bir pil tasarrufu modundaysa 
+                // hata vermesini engellemek için bu kısmı ekliyoruz.
+                console.log("Otomatik oynatma engellendi.");
+            });
         });
 
         // GERİ SAYIM
