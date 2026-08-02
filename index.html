@@ -16,6 +16,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Kaligrafi Fontu (Great Vibes) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
     <!-- AOS Animasyon Kütüphanesi CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -151,14 +154,26 @@
         }
         .kapak-icerik { width: min(1220px, 100%); }
         .ust-yazi {
-            display: flex; align-items: center; justify-content: center; gap: 18px;
-            margin-bottom: 24px; color: #fdf1d9; /* Biraz daha parlak, göz alıcı bir renk */
-            font-family: var(--font-metin);
-            font-size: 19px; /* 16px'ten 19px'e büyüttük */
-            font-weight: 700; /* Yazıyı daha dolgun yaptık */
-            letter-spacing: 10px; /* Harf aralarını açıp premium hissini koruduk */
-            line-height: 1; text-transform: uppercase; 
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45); /* Arka plandan net kopsun diye gölgeyi belirginleştirdik */
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+            margin-bottom: 10px; /* İsimlere biraz daha yakın, sıcak bir duruş */
+            color: #ead4aa; /* Zarif şampanya/altın tonu */
+            font-family: 'Great Vibes', cursive; /* Yeni kaligrafi fontumuz */
+            font-size: 44px; /* Kaligrafi fontları küçük durduğu için büyük bir değer girdik */
+            font-weight: 400; /* Kaligrafi zarif kalmalı, kalınlaştırmıyoruz */
+            letter-spacing: 1px; /* Harflerin birbirine bağlanması için aralığı kıstık */
+            line-height: 1; 
+            text-transform: none; /* Büyük harf zorlamasını iptal ettik */
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Yanlardaki zarif, giderek kaybolan çizgiler */
+        .ust-yazi::before, .ust-yazi::after {
+            content: ""; width: 70px; height: 1px; 
+            background: linear-gradient(to right, transparent, rgba(234, 212, 170, 0.7));
+        }
+        
+        .ust-yazi::after { 
+            background: linear-gradient(to left, transparent, rgba(234, 212, 170, 0.7)); 
         }
         
         .kapak h1 {
@@ -261,10 +276,21 @@
         }
 
         @media (max-width: 750px) {
-            .kapak { background-attachment: scroll; padding-top: 58px; padding-bottom: 58px; }
-            .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
-            .geri-sayim { grid-template-columns: repeat(2, 1fr); }
-            .form-satiri { grid-template-columns: 1fr; gap: 0; }
+    .kapak { background-attachment: scroll; padding-top: 58px; padding-bottom: 58px; }
+    .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
+    .geri-sayim { grid-template-columns: repeat(2, 1fr); }
+    .form-satiri { grid-template-columns: 1fr; gap: 0; }
+    
+    /* Evleniyoruz Kaligrafi - Mobil Ayarı */
+    .ust-yazi {
+        gap: 12px;
+        font-size: 34px;
+        letter-spacing: 1px;
+    }
+    .ust-yazi::before, .ust-yazi::after {
+        width: 40px;
+    }
+}
         }
 
         @media (max-width: 430px) {
