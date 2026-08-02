@@ -490,6 +490,9 @@
         const acilisEkrani = document.getElementById("acilisEkrani");
 
         davetiAcButonu.addEventListener("click", function () {
+            // Tarayıcıyı anında en üste sabitler
+            window.scrollTo({ top: 0, behavior: 'instant' });
+
             acilisEkrani.classList.add("gizli");
             document.body.classList.remove("kilitli");
             
