@@ -280,6 +280,12 @@
     .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
     .geri-sayim { grid-template-columns: repeat(2, 1fr); }
     .form-satiri { grid-template-columns: 1fr; gap: 0; }
+    /* İsimleri ve & işaretini mobilde alt alta zarifçe hizalama */
+            .kapak h1 .ampersand {
+                display: block;
+                margin: 5px 0; /* Üstten ve alttan tatlı bir boşluk */
+                font-size: 0.85em; /* & işareti isimlere göre bir tık daha kibar dursun */
+            }
     /* Program kartlarını ekrana sığdırma */
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     
