@@ -224,18 +224,35 @@
         }
 
         @media (max-width: 430px) {
-            /* DÜĞÜN PROGRAMI DÜZELTMELERİ: Tek devasa kolon yerine 2'li şık bir grid (kutu) yapısı */
+            /* DÜĞÜN PROGRAMI DÜZELTMELERİ */
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .program-karti { padding: 22px 10px; }
             .program-karti .program-ikon { font-size: 28px; margin-bottom: 4px; }
             .program-karti strong { font-size: 20px; }
             .program-karti h3 { font-size: 17px; margin-top: 4px; }
 
-            /* HİKAYEMİZ DÜZELTMELERİ: Çizgi sola çekildi, fotoğrafa ve yazıya yer açıldı */
+            /* HİKAYEMİZ DÜZELTMELERİ */
             .zaman-cizgisi { padding-left: 32px; }
             .zaman-cizgisi::before { left: 10px; }
             .zaman-dugum { left: -44px; width: 34px; height: 34px; border-width: 4px; font-size: 10px; top: 12px; }
+            
+            /* 🌟 YENİ: ZARİF POLAROİD GÖRÜNÜMÜ 🌟 */
+            .zaman-adimi:nth-child(odd) .polaroid-kart, 
+            .zaman-adimi:nth-child(even) .polaroid-kart { 
+                width: 82%; /* Ekrana tam yapışmasın, %100'den %82'ye çektik */
+                max-width: 260px; /* Çok da büyümesin, kibar dursun */
+                margin: 0; /* Ortalamak yerine zaman çizgisine (sola) yakın tuttuk */
+                transform: rotate(-1.5deg); /* Çok hafif, tatlı bir eğim verdik */
+            }
+            .zaman-adimi:nth-child(even) .polaroid-kart { 
+                transform: rotate(1.5deg); /* Çift sayılı kartlar sağa yatsın */
+            }
             .polaroid-fotograf { aspect-ratio: 4 / 5; }
+            
+            /* Yazıları da küçülen fotoğrafa göre kibarlaştırdık */
+            .polaroid-alt-yazi { font-size: 14px; padding: 10px 5px 0; }
+            .zaman-bilgi { margin-top: 18px; padding-left: 5px; }
+            
             .zaman-bilgi h3 { font-size: 25px; margin-bottom: 6px; }
             .zaman-bilgi p { font-size: 15px; line-height: 1.6; }
         }
