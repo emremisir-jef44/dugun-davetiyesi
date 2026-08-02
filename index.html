@@ -280,6 +280,8 @@
     .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
     .geri-sayim { grid-template-columns: repeat(2, 1fr); }
     .form-satiri { grid-template-columns: 1fr; gap: 0; }
+    /* Program kartlarını ekrana sığdırma */
+            .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     
     /* Evleniyoruz Kaligrafi - Mobil Ayarı */
     .ust-yazi {
@@ -325,6 +327,10 @@
             
             .zaman-bilgi h3 { font-size: 25px; margin-bottom: 6px; }
             .zaman-bilgi p { font-size: 15px; line-height: 1.6; }
+
+            /* Karşılama Ekranı "var" kelimesi düzeltmesi */
+            .karsilama-karti { padding: 45px 20px; }
+            .karsilama-karti h1 { font-size: 26px; }
         }
     </style>
 </head>
@@ -459,7 +465,7 @@
 
             <div class="program-listesi">
                 <article class="program-karti" data-aos="fade-up" data-aos-delay="0">
-                    <span class="program-ikon">🥂</span>
+                    <span class="program-ikon">🤍</span>
                     <strong>18.30</strong>
                     <h3>Karşılama</h3>
                 </article>
