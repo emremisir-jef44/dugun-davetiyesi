@@ -537,6 +537,9 @@
         const muzikButonu = document.getElementById("muzikButonu");
         let caliyorMu = false;
 
+        // 🌟 YENİ: Ses seviyesini %20 (kısık) olarak ayarlıyoruz (0.0 ile 1.0 arasında değer alır)
+        muzik.volume = 0.2;
+
         muzikButonu.addEventListener("click", function () {
             if (caliyorMu) {
                 muzik.pause();
@@ -559,8 +562,15 @@
             acilisEkrani.classList.add("gizli");
             document.body.classList.remove("kilitli");
             
-            // Eğer istersen, davet açıldığında müzik otomatik başlasın diye alttaki yorumu kaldırabilirsin:
-            // muzik.play(); muzikButonu.classList.add("caliyor"); caliyorMu = true;
+            // 🌟 YENİ: Daveti aç butonuna tıklandığında müziği otomatik başlat
+            muzik.play().then(() => {
+                muzikButonu.classList.add("caliyor");
+                caliyorMu = true;
+            }).catch(hata => {
+                // Eğer kullanıcının tarayıcısı aşırı katı bir pil tasarrufu modundaysa 
+                // hata vermesini engellemek için bu kısmı ekliyoruz.
+                console.log("Otomatik oynatma engellendi.");
+            });
         });
 
         // GERİ SAYIM
