@@ -55,21 +55,62 @@
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
         .acilis-ekrani.gizli { opacity: 0; visibility: hidden; pointer-events: none; }
-        .zarf-karti {
-            width: min(430px, 100%); padding: 45px 28px; text-align: center;
-            background-color: rgba(255, 255, 255, 0.92); border: 1px solid rgba(173, 145, 96, 0.35);
-            border-radius: 25px; box-shadow: 0 25px 70px rgba(45, 57, 48, 0.16);
+        
+        /* Yeni Buzlu Cam (Glassmorphism) Efektli Kart */
+        .karsilama-karti {
+            width: min(430px, 100%); 
+            padding: 55px 35px; 
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.65); /* Arka planı hafif şeffaflaştırdık */
+            backdrop-filter: blur(12px); /* Buzlu cam efekti veren sihirli kod */
+            -webkit-backdrop-filter: blur(12px); /* Safari (iPhone) uyumluluğu */
+            border: 1px solid rgba(173, 145, 96, 0.4); /* Zarif altın sarısı ince kenarlık */
+            border-radius: 12px; /* Köşeleri daha keskin/matbaa tarzı yaptık */
+            box-shadow: 0 30px 60px rgba(45, 57, 48, 0.12), 
+                        inset 0 0 20px rgba(255, 255, 255, 0.5); /* İçeriye hafif bir ışık yansıması */
         }
-        .zarf {
-            display: block; margin-bottom: 10px; font-size: 85px;
-            animation: zarfHareketi 2s infinite ease-in-out;
+        
+        /* A & Z Monogram Tasarımı */
+        .monogram {
+            font-family: var(--font-baslik);
+            font-size: 56px;
+            color: var(--altin);
+            margin-bottom: 12px;
+            line-height: 1;
+            letter-spacing: 2px;
         }
-        @keyframes zarfHareketi {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            50% { transform: translateY(-12px) rotate(2deg); }
+        
+        .monogram-amp {
+            font-size: 42px;
+            color: var(--koyu-yesil);
+            font-style: italic;
+            font-weight: 400;
         }
-        .zarf-karti h1 { margin: 0 0 12px; font-family: var(--font-baslik); font-size: 35px; font-weight: normal; color: var(--koyu-yesil); }
-        .zarf-karti p { margin: 0 0 25px; color: var(--gri); }
+
+        .karsilama-tarih {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--gri);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .karsilama-karti h1 { 
+            margin: 0 0 15px; 
+            font-family: var(--font-baslik); 
+            font-size: 32px; 
+            font-weight: 500; 
+            color: var(--koyu-yesil); 
+            letter-spacing: -0.5px;
+        }
+        
+        .karsilama-karti p { 
+            margin: 0 0 30px; 
+            color: var(--gri); 
+            font-size: 15px;
+            line-height: 1.8;
+        }
 
         /* BUTONLAR */
         .buton {
@@ -269,10 +310,15 @@
 
     <!-- AÇILIŞ EKRANI -->
     <div class="acilis-ekrani" id="acilisEkrani">
-        <div class="zarf-karti">
-            <span class="zarf">💌</span>
+        <div class="karsilama-karti">
+            <div class="monogram">A <span class="monogram-amp">&amp;</span> Z</div>
+            
+            <div class="karsilama-tarih">6 Mart 2027</div>
+            
             <h1>Size özel bir davetimiz var</h1>
-            <p>Mutluluğumuzu paylaşmanız ve bu özel günümüze tanıklık etmeniz dileğiyle...</p>
+            
+            <p>Mutluluğumuzu paylaşmanız ve<br>bu özel günümüze tanıklık etmeniz dileğiyle...</p>
+            
             <button class="buton" id="davetiAc">Daveti Aç</button>
         </div>
     </div>
