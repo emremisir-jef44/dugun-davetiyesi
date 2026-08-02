@@ -206,25 +206,38 @@
         @media (max-width: 900px) {
             .zaman-cizgisi { max-width: 620px; padding-left: 56px; }
             .zaman-cizgisi::before { left: 22px; transform: none; }
-            .zaman-adimi { display: block; min-height: 0; margin-bottom: 70px; }
+            /* Hikaye kartları arasına daha fazla nefes alma boşluğu eklendi */
+            .zaman-adimi { display: block; min-height: 0; margin-bottom: 90px; }
             .zaman-dugum { position: absolute; top: 10px; left: -62px; width: 46px; height: 46px; border-width: 6px; }
             .zaman-adimi:nth-child(odd) .polaroid-kart, .zaman-adimi:nth-child(even) .polaroid-kart { width: 100%; margin: 0 auto; transform: rotate(-1deg); }
             .zaman-adimi:nth-child(even) .polaroid-kart { transform: rotate(1deg); }
-            .zaman-adimi:nth-child(odd) .zaman-bilgi, .zaman-adimi:nth-child(even) .zaman-bilgi { max-width: none; margin-top: 30px; padding: 0; text-align: left; }
+            /* Fotoğraf ile altındaki yazı arasına biraz daha mesafe kondu */
+            .zaman-adimi:nth-child(odd) .zaman-bilgi, .zaman-adimi:nth-child(even) .zaman-bilgi { max-width: none; margin-top: 25px; padding: 0; text-align: left; }
             .polaroid-fotograf { aspect-ratio: 4 / 3; }
         }
+
         @media (max-width: 750px) {
             .kapak { background-attachment: scroll; padding-top: 58px; padding-bottom: 58px; }
             .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
-            .geri-sayim, .program-listesi { grid-template-columns: repeat(2, 1fr); }
+            .geri-sayim { grid-template-columns: repeat(2, 1fr); }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
         }
+
         @media (max-width: 430px) {
-            .program-listesi { grid-template-columns: 1fr; }
-            .zaman-cizgisi { padding-left: 42px; }
-            .zaman-cizgisi::before { left: 15px; }
-            .zaman-dugum { left: -48px; width: 38px; height: 38px; border-width: 5px; font-size: 11px; }
+            /* DÜĞÜN PROGRAMI DÜZELTMELERİ: Tek devasa kolon yerine 2'li şık bir grid (kutu) yapısı */
+            .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .program-karti { padding: 22px 10px; }
+            .program-karti .program-ikon { font-size: 28px; margin-bottom: 4px; }
+            .program-karti strong { font-size: 20px; }
+            .program-karti h3 { font-size: 17px; margin-top: 4px; }
+
+            /* HİKAYEMİZ DÜZELTMELERİ: Çizgi sola çekildi, fotoğrafa ve yazıya yer açıldı */
+            .zaman-cizgisi { padding-left: 32px; }
+            .zaman-cizgisi::before { left: 10px; }
+            .zaman-dugum { left: -44px; width: 34px; height: 34px; border-width: 4px; font-size: 10px; top: 12px; }
             .polaroid-fotograf { aspect-ratio: 4 / 5; }
+            .zaman-bilgi h3 { font-size: 25px; margin-bottom: 6px; }
+            .zaman-bilgi p { font-size: 15px; line-height: 1.6; }
         }
     </style>
 </head>
