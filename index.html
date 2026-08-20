@@ -77,7 +77,7 @@
         .video-overlay { position: absolute; inset: 0; background: rgba(251, 249, 246, 0.25); z-index: 1; } 
         .kapak-icerik { position: relative; z-index: 2; width: min(1220px, 100%); }
         
-        .ust-yazi { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: -15px; color: var(--koyu-yesil); font-family: var(--font-baslik); font-size: 16px; font-weight: 500; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 2px 20px rgba(255,255,255,0.9); }
+        .ust-yazi { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; color: var(--koyu-yesil); font-family: var(--font-baslik); font-size: 16px; font-weight: 500; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 2px 20px rgba(255,255,255,0.9); }
         .ust-yazi::before, .ust-yazi::after { content: ""; width: 70px; height: 1px; background: linear-gradient(to right, transparent, var(--koyu-yesil)); }
         .ust-yazi::after { background: linear-gradient(to left, transparent, var(--koyu-yesil)); }
         
@@ -160,13 +160,22 @@
         }
 
         @media (max-width: 750px) {
-            .kapak { padding-top: 90px; padding-bottom: 90px; }
-            .kapak h1 { font-size: clamp(55px, 15vw, 80px); white-space: normal; line-height: 1.2; }
+            .kapak { padding-top: 58px; padding-bottom: 58px; }
+            /* İsimlerin fontunu bir tık küçültüp satır aralığını açtık */
+            .kapak h1 { font-size: clamp(50px, 13.5vw, 70px); white-space: normal; line-height: 1.1; margin-top: 10px; }
+            
+            /* Geri sayım ve Butonların arasına ferahlık verdik */
             .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
-            .kapak h1 .ampersand { display: block; margin: -5px 0; font-size: 0.6em; }
+            .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+            
+            /* & işaretinin altından ve üstünden efsane bir boşluk verdik */
+            .kapak h1 .ampersand { display: block; margin: 15px 0; font-size: 0.6em; }
+            
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .ust-yazi { gap: 12px; font-size: 14px; letter-spacing: 3px; }
+            
+            /* Evleniyoruz yazısının aralığını düzelttik */
+            .ust-yazi { gap: 12px; font-size: 14px; letter-spacing: 3px; margin-bottom: 10px; }
             .ust-yazi::before, .ust-yazi::after { width: 40px; }
         }
 
