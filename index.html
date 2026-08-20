@@ -69,9 +69,9 @@
         .video-overlay { position: absolute; inset: 0; background: rgba(251, 249, 246, 0.25); z-index: 1; } 
         .kapak-icerik { position: relative; z-index: 2; width: min(1220px, 100%); }
         
-        .ust-yazi { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: -5px; color: var(--altin); font-family: var(--font-baslik); font-size: 22px; font-weight: 600; letter-spacing: 8px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(255,255,255,1); z-index: 2; }
-        .ust-yazi::before, .ust-yazi::after { content: ""; width: 90px; height: 1px; background: linear-gradient(to right, transparent, var(--altin)); }
-        .ust-yazi::after { background: linear-gradient(to left, transparent, var(--altin)); }
+        .ust-yazi { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: -15px; color: var(--koyu-yesil); font-family: var(--font-isim); font-size: 48px; font-weight: 400; letter-spacing: 1px; text-transform: none; text-shadow: 0 2px 20px rgba(255,255,255,0.9); z-index: 2; }
+        .ust-yazi::before, .ust-yazi::after { content: ""; width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--koyu-yesil)); }
+        .ust-yazi::after { background: linear-gradient(to left, transparent, var(--koyu-yesil)); }
         
         .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(85px, 11vw, 140px); font-weight: 400; line-height: 1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); position: relative; z-index: 2; }
         .kapak h1 .ampersand { display: inline-block; margin: 0 0.1em; font-family: var(--font-baslik); font-size: 0.55em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
@@ -142,14 +142,14 @@
 
         @media (max-width: 750px) {
             .kapak { padding-top: 58px; padding-bottom: 58px; }
-            .kapak h1 { font-size: clamp(50px, 13.5vw, 70px); white-space: normal; line-height: 1.1; margin-top: 10px; }
+            .kapak h1 { font-size: clamp(65px, 16vw, 90px); white-space: normal; line-height: 1; margin-top: 10px; }
             .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
             .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
-            .kapak h1 .ampersand { display: block; margin: 15px 0; font-size: 0.6em; }
+            .kapak h1 .ampersand { display: block; margin: -5px 0; font-size: 0.5em; }
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .ust-yazi { gap: 12px; font-size: 14px; letter-spacing: 3px; margin-bottom: 10px; }
-            .ust-yazi::before, .ust-yazi::after { width: 40px; }
+            .ust-yazi { gap: 15px; font-size: 38px; letter-spacing: 1px; margin-bottom: 0px; }
+            .ust-yazi::before, .ust-yazi::after { width: 45px; }
         }
 
         @media (max-width: 430px) {
