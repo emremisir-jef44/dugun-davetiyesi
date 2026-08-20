@@ -63,7 +63,7 @@
         .buton { display: inline-block; padding: 14px 28px; border: none; border-radius: 999px; background-color: var(--koyu-yesil); color: white; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-metin); }
         .buton:hover { transform: translateY(-2px); background-color: var(--altin); box-shadow: 0 10px 20px rgba(194, 167, 112, 0.2); }
         .buton:disabled { opacity: 0.65; cursor: wait; transform: none; }
-        .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 45px; }
         .buton.seffaf { background-color: transparent; border: 1px solid var(--koyu-yesil); color: var(--koyu-yesil); }
         .buton.seffaf:hover { background-color: var(--koyu-yesil); color: white; }
 
@@ -83,8 +83,7 @@
         
         .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(80px, 10vw, 130px); font-weight: 400; line-height: 1.1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); }
         .kapak h1 .ampersand { display: inline-block; margin: 0 0.15em; font-family: var(--font-baslik); font-size: 0.5em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
-        .tarih { margin: 10px 0 25px; font-size: 15px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--koyu-yesil); text-shadow: 0 2px 10px rgba(255,255,255,0.9); }
-        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 16px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); }
+        .tarih { margin: 15px 0 30px; font-size: 19px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--koyu-yesil); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 16px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); }
 
         .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 750px; margin: 45px auto 0; }
         .sayac-kutusu { padding: 24px 10px; background-color: rgba(251, 249, 246, 0.9); border: 1px solid rgba(194, 167, 112, 0.3); border-radius: 12px; backdrop-filter: blur(8px); color: var(--koyu-yesil); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
@@ -161,7 +160,7 @@
         }
 
         @media (max-width: 750px) {
-            .kapak { padding-top: 58px; padding-bottom: 58px; }
+            .kapak { padding-top: 90px; padding-bottom: 90px; }
             .kapak h1 { font-size: clamp(55px, 15vw, 80px); white-space: normal; line-height: 1.2; }
             .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
