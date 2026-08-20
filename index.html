@@ -69,12 +69,12 @@
         .video-overlay { position: absolute; inset: 0; background: rgba(251, 249, 246, 0.25); z-index: 1; } 
         .kapak-icerik { position: relative; z-index: 2; width: min(1220px, 100%); }
         
-        .ust-yazi { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; color: var(--koyu-yesil); font-family: var(--font-baslik); font-size: 16px; font-weight: 500; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 2px 20px rgba(255,255,255,0.9); }
-        .ust-yazi::before, .ust-yazi::after { content: ""; width: 70px; height: 1px; background: linear-gradient(to right, transparent, var(--koyu-yesil)); }
-        .ust-yazi::after { background: linear-gradient(to left, transparent, var(--koyu-yesil)); }
+        .ust-yazi { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: -5px; color: var(--altin); font-family: var(--font-baslik); font-size: 22px; font-weight: 600; letter-spacing: 8px; text-transform: uppercase; text-shadow: 0 4px 20px rgba(255,255,255,1); z-index: 2; }
+        .ust-yazi::before, .ust-yazi::after { content: ""; width: 90px; height: 1px; background: linear-gradient(to right, transparent, var(--altin)); }
+        .ust-yazi::after { background: linear-gradient(to left, transparent, var(--altin)); }
         
-        .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(80px, 10vw, 130px); font-weight: 400; line-height: 1.1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); }
-        .kapak h1 .ampersand { display: inline-block; margin: 0 0.15em; font-family: var(--font-baslik); font-size: 0.5em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
+        .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(85px, 11vw, 140px); font-weight: 400; line-height: 1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); position: relative; z-index: 2; }
+        .kapak h1 .ampersand { display: inline-block; margin: 0 0.1em; font-family: var(--font-baslik); font-size: 0.55em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
         .tarih { margin: 15px 0 30px; font-size: 19px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--koyu-yesil); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }
         .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 16px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); }
 
