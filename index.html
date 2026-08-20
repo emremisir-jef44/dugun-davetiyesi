@@ -32,22 +32,14 @@
             --yazi: #2c362e;
             --gri: #68736a;
             --hata: #a33a3a;
-            --font-isim: 'Pinyon Script', cursive; /* Efsane lüks kaligrafi */
-            --font-baslik: 'Cinzel', serif; /* Butik ve keskin başlıklar */
-            --font-metin: 'Jost', sans-serif; /* İnce, modern ve jilet gibi okunaklı */
+            --font-isim: 'Pinyon Script', cursive; 
+            --font-baslik: 'Cinzel', serif; 
+            --font-metin: 'Jost', sans-serif; 
         }
 
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
-        body { 
-            margin: 0; 
-            font-family: var(--font-metin); 
-            background: linear-gradient(180deg, #fbf9f6 0%, #ffffff 50%, #fbf9f6 100%); 
-            color: var(--yazi); 
-            line-height: 1.7; 
-            font-weight: 300; 
-        }
+        body { margin: 0; font-family: var(--font-metin); background: linear-gradient(180deg, #fbf9f6 0%, #ffffff 50%, #fbf9f6 100%); color: var(--yazi); line-height: 1.7; font-weight: 300; }
         body.kilitli { overflow: hidden; }
 
         .acilis-ekrani { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; background: radial-gradient(circle at top left, #ffffff, transparent 60%), var(--krem); transition: opacity 0.8s ease, visibility 0.8s ease; }
@@ -83,9 +75,10 @@
         
         .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(80px, 10vw, 130px); font-weight: 400; line-height: 1.1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); }
         .kapak h1 .ampersand { display: inline-block; margin: 0 0.15em; font-family: var(--font-baslik); font-size: 0.5em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
-        .tarih { margin: 15px 0 30px; font-size: 19px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--koyu-yesil); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 16px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); }
+        .tarih { margin: 15px 0 30px; font-size: 19px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--koyu-yesil); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }
+        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 16px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); }
 
-        .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 750px; margin: 45px auto 0; }
+        .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 750px; margin: 0 auto; }
         .sayac-kutusu { padding: 24px 10px; background-color: rgba(251, 249, 246, 0.9); border: 1px solid rgba(194, 167, 112, 0.3); border-radius: 12px; backdrop-filter: blur(8px); color: var(--koyu-yesil); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         .sayac-kutusu strong { display: block; font-family: var(--font-baslik); font-size: clamp(30px, 5vw, 42px); font-weight: 500; line-height: 1; }
         .sayac-kutusu span { display: block; margin-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gri); font-weight: 500; }
@@ -96,28 +89,27 @@
         .bolum-basligi { margin: 0 0 15px; text-align: center; font-family: var(--font-baslik); font-size: clamp(36px, 5vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: 2px; color: var(--koyu-yesil); }
         .bolum-aciklama { max-width: 690px; margin: 0 auto 60px; text-align: center; color: var(--gri); line-height: 1.9; font-size: 15px; }
 
-        .zaman-cizgisi { position: relative; max-width: 1020px; margin: 0 auto; padding: 10px 0; }
-        .zaman-cizgisi::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: linear-gradient(to bottom, transparent, var(--altin), transparent); transform: translateX(-50%); }
-        .zaman-adimi { position: relative; display: grid; grid-template-columns: 1fr 86px 1fr; align-items: center; min-height: 420px; margin-bottom: 24px; }
-        .zaman-adimi:last-child { margin-bottom: 0; }
+        /* YATAY KAYDIRMALI HİKAYEMİZ */
+        .zaman-cizgisi { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 30px; padding: 10px 10px 40px 10px; margin: 0; -ms-overflow-style: none; scrollbar-width: none; }
+        .zaman-cizgisi::-webkit-scrollbar { display: none; }
         
-        .zaman-dugum { grid-column: 2; position: relative; z-index: 3; justify-self: center; display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border: 3px solid var(--acik-krem); border-radius: 50%; background-color: var(--altin); color: white; font-weight: 500; font-size: 14px; box-shadow: 0 5px 15px rgba(194, 167, 112, 0.4); font-family: var(--font-baslik); }
-        .zaman-bilgi { max-width: 390px; }
+        .zaman-adimi { flex: 0 0 340px; scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
         
-        .zaman-adimi:nth-child(odd) .polaroid-kart { grid-column: 1; grid-row: 1; justify-self: end; transform: rotate(-1.5deg); }
-        .zaman-adimi:nth-child(odd) .zaman-bilgi { grid-column: 3; grid-row: 1; justify-self: start; padding-left: 22px; }
-        .zaman-adimi:nth-child(even) .zaman-bilgi { grid-column: 1; grid-row: 1; justify-self: end; padding-right: 22px; text-align: right; }
-        .zaman-adimi:nth-child(even) .polaroid-kart { grid-column: 3; grid-row: 1; justify-self: start; transform: rotate(1.5deg); }
+        .polaroid-kart { width: 100%; background: white; padding: 14px 14px 25px; border: 1px solid rgba(194, 167, 112, 0.15); border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .zaman-adimi:nth-child(odd) .polaroid-kart { transform: rotate(-1.5deg); }
+        .zaman-adimi:nth-child(even) .polaroid-kart { transform: rotate(1.5deg); }
+        .polaroid-kart:hover { transform: translateY(-7px) rotate(0deg) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
         
-        .polaroid-kart { position: relative; width: min(365px, 100%); background: white; padding: 14px 14px 25px; border: 1px solid rgba(194, 167, 112, 0.15); border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); transition: transform 0.4s ease, box-shadow 0.4s ease; }
-        .polaroid-kart:hover { transform: translateY(-7px) rotate(0deg) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
         .polaroid-fotograf { overflow: hidden; width: 100%; aspect-ratio: 4 / 5; background: #f0f0f0; }
         .polaroid-fotograf img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 0.6s ease; }
         .polaroid-kart:hover .polaroid-fotograf img { transform: scale(1.04); }
         .polaroid-alt-yazi { padding: 17px 5px 0; text-align: center; font-family: var(--font-isim); font-size: 26px; color: var(--koyu-yesil); }
         
+        .zaman-dugum { position: relative; z-index: 3; width: 45px; height: 45px; border: 3px solid var(--acik-krem); border-radius: 50%; background-color: var(--altin); color: white; font-weight: 500; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(194, 167, 112, 0.4); font-family: var(--font-baslik); margin-top: -20px; margin-bottom: 15px; }
+        
+        .zaman-bilgi { text-align: center; width: 100%; padding: 0 10px; }
         .zaman-tarih { display: inline-block; margin-bottom: 12px; padding: 6px 14px; border: 1px solid rgba(194, 167, 112, 0.4); border-radius: 999px; color: var(--altin); font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; }
-        .zaman-bilgi h3 { margin: 0 0 12px; font-family: var(--font-baslik); font-size: 32px; line-height: 1.1; color: var(--koyu-yesil); font-weight: 500; letter-spacing: 1px; }
+        .zaman-bilgi h3 { margin: 0 0 12px; font-family: var(--font-baslik); font-size: 28px; line-height: 1.1; color: var(--koyu-yesil); font-weight: 500; letter-spacing: 1px; }
         .zaman-bilgi p { margin: 0; color: var(--gri); line-height: 1.8; font-size: 15px; }
 
         .program-listesi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -148,33 +140,14 @@
         footer h2 { margin: 0 0 10px; font-family: var(--font-isim); font-size: 55px; font-weight: 400; color: var(--krem); line-height: 1; }
         footer p { color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
 
-        @media (max-width: 900px) {
-            .zaman-cizgisi { max-width: 620px; padding-left: 56px; }
-            .zaman-cizgisi::before { left: 22px; transform: none; }
-            .zaman-adimi { display: block; min-height: 0; margin-bottom: 90px; }
-            .zaman-dugum { position: absolute; top: 10px; left: -62px; width: 38px; height: 38px; font-size: 12px; border-width: 3px; }
-            .zaman-adimi:nth-child(odd) .polaroid-kart, .zaman-adimi:nth-child(even) .polaroid-kart { width: 100%; margin: 0 auto; transform: rotate(-1deg); }
-            .zaman-adimi:nth-child(even) .polaroid-kart { transform: rotate(1deg); }
-            .zaman-adimi:nth-child(odd) .zaman-bilgi, .zaman-adimi:nth-child(even) .zaman-bilgi { max-width: none; margin-top: 25px; padding: 0; text-align: left; }
-            .polaroid-fotograf { aspect-ratio: 4 / 3; }
-        }
-
         @media (max-width: 750px) {
             .kapak { padding-top: 58px; padding-bottom: 58px; }
-            /* İsimlerin fontunu bir tık küçültüp satır aralığını açtık */
             .kapak h1 { font-size: clamp(50px, 13.5vw, 70px); white-space: normal; line-height: 1.1; margin-top: 10px; }
-            
-            /* Geri sayım ve Butonların arasına ferahlık verdik */
             .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
             .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
-            
-            /* & işaretinin altından ve üstünden efsane bir boşluk verdik */
             .kapak h1 .ampersand { display: block; margin: 15px 0; font-size: 0.6em; }
-            
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            
-            /* Evleniyoruz yazısının aralığını düzelttik */
             .ust-yazi { gap: 12px; font-size: 14px; letter-spacing: 3px; margin-bottom: 10px; }
             .ust-yazi::before, .ust-yazi::after { width: 40px; }
         }
@@ -186,17 +159,11 @@
             .program-karti strong { font-size: 18px; }
             .program-karti h3 { font-size: 14px; margin-top: 6px; }
 
-            .zaman-cizgisi { padding-left: 32px; }
-            .zaman-cizgisi::before { left: 10px; }
-            .zaman-dugum { left: -44px; width: 32px; height: 32px; border-width: 2px; font-size: 10px; top: 12px; }
-            
-            .zaman-adimi:nth-child(odd) .polaroid-kart, 
-            .zaman-adimi:nth-child(even) .polaroid-kart { width: 85%; max-width: 260px; margin: 0; transform: rotate(-1.5deg); }
-            .zaman-adimi:nth-child(even) .polaroid-kart { transform: rotate(1.5deg); }
-            .polaroid-fotograf { aspect-ratio: 4 / 5; }
+            /* YATAY KAYDIRMALI HİKAYEMİZ MOBİL AYARI */
+            .zaman-adimi { flex: 0 0 85vw; } 
             
             .polaroid-alt-yazi { font-size: 22px; padding: 12px 5px 0; }
-            .zaman-bilgi { margin-top: 18px; padding-left: 5px; }
+            .zaman-bilgi { margin-top: 5px; padding-left: 5px; }
             .zaman-bilgi h3 { font-size: 24px; margin-bottom: 6px; }
             .zaman-bilgi p { font-size: 14px; line-height: 1.7; }
 
