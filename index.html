@@ -89,11 +89,11 @@
         .bolum-basligi { margin: 0 0 15px; text-align: center; font-family: var(--font-baslik); font-size: clamp(36px, 5vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: 2px; color: var(--koyu-yesil); }
         .bolum-aciklama { max-width: 690px; margin: 0 auto 60px; text-align: center; color: var(--gri); line-height: 1.9; font-size: 15px; }
 
-        /* YATAY KAYDIRMALI HİKAYEMİZ */
-        .zaman-cizgisi { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 30px; padding: 10px 10px 40px 10px; margin: 0; -ms-overflow-style: none; scrollbar-width: none; }
+        /* YATAY KAYDIRMALI HİKAYEMİZ (Serbest Kaydırma - Dinamik) */
+        .zaman-cizgisi { display: flex; overflow-x: auto; gap: 20px; padding: 10px 20px 40px 20px; margin: 0; -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         .zaman-cizgisi::-webkit-scrollbar { display: none; }
         
-        .zaman-adimi { flex: 0 0 340px; scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
+        .zaman-adimi { flex: 0 0 290px; display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
         
         .polaroid-kart { width: 100%; background: white; padding: 14px 14px 25px; border: 1px solid rgba(194, 167, 112, 0.15); border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); transition: transform 0.4s ease, box-shadow 0.4s ease; }
         .zaman-adimi:nth-child(odd) .polaroid-kart { transform: rotate(-1.5deg); }
@@ -160,7 +160,8 @@
             .program-karti h3 { font-size: 14px; margin-top: 6px; }
 
             /* YATAY KAYDIRMALI HİKAYEMİZ MOBİL AYARI */
-            .zaman-adimi { flex: 0 0 85vw; } 
+            .zaman-cizgisi { gap: 12px; padding: 10px 15px 40px 15px; }
+            .zaman-adimi { flex: 0 0 65vw; }
             
             .polaroid-alt-yazi { font-size: 22px; padding: 12px 5px 0; }
             .zaman-bilgi { margin-top: 5px; padding-left: 5px; }
