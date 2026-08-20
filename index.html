@@ -64,13 +64,13 @@
             width: min(430px, 100%); 
             padding: 55px 35px; 
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.65); /* Arka planı hafif şeffaflaştırdık */
-            backdrop-filter: blur(12px); /* Buzlu cam efekti veren sihirli kod */
-            -webkit-backdrop-filter: blur(12px); /* Safari (iPhone) uyumluluğu */
-            border: 1px solid rgba(173, 145, 96, 0.4); /* Zarif altın sarısı ince kenarlık */
-            border-radius: 12px; /* Köşeleri daha keskin/matbaa tarzı yaptık */
+            background-color: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            border: 1px solid rgba(173, 145, 96, 0.4); 
+            border-radius: 12px; 
             box-shadow: 0 30px 60px rgba(45, 57, 48, 0.12), 
-                        inset 0 0 20px rgba(255, 255, 255, 0.5); /* İçeriye hafif bir ışık yansıması */
+                        inset 0 0 20px rgba(255, 255, 255, 0.5); 
         }
         
         /* A & Z Monogram Tasarımı */
@@ -126,8 +126,8 @@
         .buton:disabled { opacity: 0.65; cursor: wait; transform: none; }
         
         .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .buton.seffaf { background-color: transparent; border: 2px solid white; }
-        .buton.seffaf:hover { background-color: white; color: var(--koyu-yesil); }
+        .buton.seffaf { background-color: transparent; border: 2px solid var(--koyu-yesil); color: var(--koyu-yesil); }
+        .buton.seffaf:hover { background-color: var(--koyu-yesil); color: white; }
 
         /* MÜZİK ÇALAR BUTONU */
         .muzik-buton {
@@ -145,51 +145,83 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(173, 145, 96, 0); }
         }
 
-        /* KAPAK */
+        /* VİDEO ARKA PLANLI KAPAK */
         .kapak {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 70px 20px; text-align: center; color: white;
-            background: linear-gradient(rgba(27, 43, 33, 0.54), rgba(27, 43, 33, 0.78)), url("images/kapak.jpg") center / cover no-repeat;
-            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 20px;
+            text-align: center;
+            color: var(--koyu-yesil);
         }
-        .kapak-icerik { width: min(1220px, 100%); }
+        .arkaplan-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.55); /* Aydınlık/Beyaz filtre. Videonun parlaklığına göre 0.55'i artırıp azaltabilirsin */
+            z-index: 1;
+        }
+        .kapak-icerik { 
+            position: relative; 
+            z-index: 2; 
+            width: min(1220px, 100%); 
+        }
+        
         .ust-yazi {
             display: flex; align-items: center; justify-content: center; gap: 15px;
             margin-bottom: 10px; 
-            color: #ead4aa; 
+            color: var(--altin); 
             font-family: 'Great Vibes', cursive; 
-            font-size: 52px; /* 44px'ten 52px'e çıkardık, kıvrımlar rahatladı */
+            font-size: 52px; 
             font-weight: 400; 
-            letter-spacing: 2px; /* 1px'ten 2px'e çıkardık. Daha fazlası harfleri koparır! */
+            letter-spacing: 2px; 
             line-height: 1; 
             text-transform: none; 
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
         }
-
-        /* Yanlardaki zarif, giderek kaybolan çizgiler */
         .ust-yazi::before, .ust-yazi::after {
             content: ""; width: 70px; height: 1px; 
-            background: linear-gradient(to right, transparent, rgba(234, 212, 170, 0.7));
+            background: linear-gradient(to right, transparent, var(--altin));
         }
-        
         .ust-yazi::after { 
-            background: linear-gradient(to left, transparent, rgba(234, 212, 170, 0.7)); 
+            background: linear-gradient(to left, transparent, var(--altin)); 
         }
         
         .kapak h1 {
             margin: 0; font-family: var(--font-baslik); font-size: clamp(62px, 6.2vw, 96px);
-            font-weight: 600; line-height: 0.95; letter-spacing: -2.5px; white-space: nowrap; text-shadow: 0 5px 24px rgba(0, 0, 0, 0.34), 0 1px 2px rgba(0, 0, 0, 0.2);
+            font-weight: 600; line-height: 0.95; letter-spacing: -2.5px; white-space: nowrap; 
         }
-        .kapak h1 .ampersand { display: inline-block; margin: 0 0.04em; color: #ead4aa; font-style: italic; font-weight: 500; transform: translateY(-0.03em); }
+        .kapak h1 .ampersand { display: inline-block; margin: 0 0.04em; color: var(--altin); font-style: italic; font-weight: 500; transform: translateY(-0.03em); }
         
-        .tarih { margin: 29px 0 15px; font-size: 18px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28); }
-        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 17px; line-height: 1.9; letter-spacing: 0.15px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
+        .tarih { margin: 29px 0 15px; font-size: 18px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; color: var(--koyu-yesil); }
+        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 17px; line-height: 1.9; letter-spacing: 0.15px; color: var(--yazi); }
 
-        /* GERİ SAYIM */
+        /* GERİ SAYIM (AYDINLIK TEMA UYARLAMASI) */
         .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 750px; margin: 45px auto 0; }
-        .sayac-kutusu { padding: 24px 10px; background-color: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 18px; backdrop-filter: blur(5px); }
+        .sayac-kutusu { 
+            padding: 24px 10px; 
+            background-color: rgba(255, 255, 255, 0.7); 
+            border: 1px solid rgba(173, 145, 96, 0.3); 
+            border-radius: 18px; 
+            backdrop-filter: blur(5px); 
+            color: var(--koyu-yesil);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
         .sayac-kutusu strong { display: block; font-family: var(--font-baslik); font-size: clamp(34px, 6vw, 52px); font-weight: 600; line-height: 1; }
-        .sayac-kutusu span { display: block; margin-top: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .sayac-kutusu span { display: block; margin-top: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--gri); }
 
         /* GENEL BÖLÜMLER */
         .bolum { padding: 90px 20px; overflow: hidden; }
@@ -265,78 +297,68 @@
         @media (max-width: 900px) {
             .zaman-cizgisi { max-width: 620px; padding-left: 56px; }
             .zaman-cizgisi::before { left: 22px; transform: none; }
-            /* Hikaye kartları arasına daha fazla nefes alma boşluğu eklendi */
             .zaman-adimi { display: block; min-height: 0; margin-bottom: 90px; }
             .zaman-dugum { position: absolute; top: 10px; left: -62px; width: 46px; height: 46px; border-width: 6px; }
             .zaman-adimi:nth-child(odd) .polaroid-kart, .zaman-adimi:nth-child(even) .polaroid-kart { width: 100%; margin: 0 auto; transform: rotate(-1deg); }
             .zaman-adimi:nth-child(even) .polaroid-kart { transform: rotate(1deg); }
-            /* Fotoğraf ile altındaki yazı arasına biraz daha mesafe kondu */
             .zaman-adimi:nth-child(odd) .zaman-bilgi, .zaman-adimi:nth-child(even) .zaman-bilgi { max-width: none; margin-top: 25px; padding: 0; text-align: left; }
             .polaroid-fotograf { aspect-ratio: 4 / 3; }
         }
 
         @media (max-width: 750px) {
-    .kapak { background-attachment: scroll; padding-top: 58px; padding-bottom: 58px; }
-    .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
-    .geri-sayim { grid-template-columns: repeat(2, 1fr); }
-    .form-satiri { grid-template-columns: 1fr; gap: 0; }
-    /* İsimleri ve & işaretini mobilde alt alta zarifçe hizalama */
+            .kapak { padding-top: 58px; padding-bottom: 58px; }
+            .kapak h1 { font-size: clamp(46px, 11.5vw, 68px); white-space: normal; }
+            .geri-sayim { grid-template-columns: repeat(2, 1fr); }
+            .form-satiri { grid-template-columns: 1fr; gap: 0; }
+            
             .kapak h1 .ampersand {
                 display: block;
-                margin: 5px 0; /* Üstten ve alttan tatlı bir boşluk */
-                font-size: 0.85em; /* & işareti isimlere göre bir tık daha kibar dursun */
+                margin: 5px 0; 
+                font-size: 0.85em; 
             }
-    /* Program kartlarını ekrana sığdırma */
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    
-    /* Evleniyoruz Kaligrafi - Mobil Ayarı */
-    .ust-yazi {
+            
+            .ust-yazi {
                 gap: 12px;
-                font-size: 40px; /* Mobilde de 34px'ten 40px'e çıkardık */
+                font-size: 40px; 
                 letter-spacing: 2px;
             }
-    .ust-yazi::before, .ust-yazi::after {
-        width: 40px;
-    }
-}
+            .ust-yazi::before, .ust-yazi::after {
+                width: 40px;
+            }
         }
 
         @media (max-width: 430px) {
-            /* DÜĞÜN PROGRAMI DÜZELTMELERİ */
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .program-karti { padding: 22px 10px; }
             .program-karti .program-ikon { font-size: 28px; margin-bottom: 4px; }
             .program-karti strong { font-size: 20px; }
             .program-karti h3 { font-size: 17px; margin-top: 4px; }
 
-            /* HİKAYEMİZ DÜZELTMELERİ */
             .zaman-cizgisi { padding-left: 32px; }
             .zaman-cizgisi::before { left: 10px; }
             .zaman-dugum { left: -44px; width: 34px; height: 34px; border-width: 4px; font-size: 10px; top: 12px; }
             
-            /* 🌟 YENİ: ZARİF POLAROİD GÖRÜNÜMÜ 🌟 */
             .zaman-adimi:nth-child(odd) .polaroid-kart, 
             .zaman-adimi:nth-child(even) .polaroid-kart { 
-                width: 82%; /* Ekrana tam yapışmasın, %100'den %82'ye çektik */
-                max-width: 260px; /* Çok da büyümesin, kibar dursun */
-                margin: 0; /* Ortalamak yerine zaman çizgisine (sola) yakın tuttuk */
-                transform: rotate(-1.5deg); /* Çok hafif, tatlı bir eğim verdik */
+                width: 82%; 
+                max-width: 260px; 
+                margin: 0; 
+                transform: rotate(-1.5deg); 
             }
             .zaman-adimi:nth-child(even) .polaroid-kart { 
-                transform: rotate(1.5deg); /* Çift sayılı kartlar sağa yatsın */
+                transform: rotate(1.5deg); 
             }
             .polaroid-fotograf { aspect-ratio: 4 / 5; }
             
-            /* Yazıları da küçülen fotoğrafa göre kibarlaştırdık */
             .polaroid-alt-yazi { font-size: 14px; padding: 10px 5px 0; }
             .zaman-bilgi { margin-top: 18px; padding-left: 5px; }
             
             .zaman-bilgi h3 { font-size: 25px; margin-bottom: 6px; }
             .zaman-bilgi p { font-size: 15px; line-height: 1.6; }
 
-            /* Karşılama Ekranı "var" kelimesi düzeltmesi */
-            .karsilama-karti { padding: 45px 12px; } /* Kenar boşluklarını daha da kıstık */
-            .karsilama-karti h1 { font-size: 22px; letter-spacing: -1px; } /* Puntoyu 26'dan 22'ye indirip, harf aralığını daralttık */
+            .karsilama-karti { padding: 45px 12px; } 
+            .karsilama-karti h1 { font-size: 22px; letter-spacing: -1px; } 
         }
     </style>
 </head>
@@ -364,8 +386,15 @@
         </div>
     </div>
 
-    <!-- ANA KAPAK -->
-    <header class="kapak">
+    <!-- ANA KAPAK (VİDEOLU YENİ TASARIM) -->
+    <header class="kapak" id="anaKapak">
+        <!-- Arka Plan Videosu -->
+        <video autoplay muted loop playsinline class="arkaplan-video">
+            <source src="images/arkaplan.mp4" type="video/mp4">
+        </video>
+        <!-- Yazıların okunması için hafif tül efekti -->
+        <div class="video-overlay"></div>
+        
         <div class="kapak-icerik">
             <div class="ust-yazi">Evleniyoruz</div>
             <h1>Abdülsamed <span class="ampersand">&amp;</span> Zeynep</h1>
@@ -375,7 +404,6 @@
                 Birlikte çıktığımız bu güzel yolculuğun en özel gününde sizleri de yanımızda görmekten mutluluk duyacağız.
             </p>
 
-            <!-- Butonlar Güncellendi -->
             <div class="buton-grubu">
                 <a class="buton" href="#katilim">Katılımını Bildir</a>
                 <a class="buton seffaf" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Abdülsamed+ve+Zeynep+Düğünü&dates=20270306T160000Z/20270306T200000Z&details=En+mutlu+günümüzde+sizleri+de+bekliyoruz.&location=Yeşil+Bahçe+Davet+Alanı,+İstanbul" target="_blank" rel="noopener">
@@ -399,7 +427,6 @@
             <p class="bolum-aciklama" data-aos="fade-up">İlk karşılaşmadan düğün günümüze uzanan yolculuğumuzun en özel anları.</p>
 
             <div class="zaman-cizgisi">
-                <!-- AOS Eklendi, Görseller Lazy Load Edildi -->
                 <article class="zaman-adimi" data-aos="fade-up">
                     <div class="polaroid-kart">
                         <div class="polaroid-fotograf">
@@ -510,7 +537,7 @@
         </div>
     </section>
 
-<!-- DAVETLİ KAMERASINDAN -->
+    <!-- DAVETLİ KAMERASINDAN -->
     <section class="bolum" id="ani-yakala">
         <div class="kapsayici" style="text-align: center;">
             <h2 class="bolum-basligi" data-aos="fade-up">Sizin Gözünüzden Biz</h2>
@@ -526,7 +553,6 @@
                 
                 <h3 style="font-family: var(--font-baslik); color: var(--koyu-yesil); font-size: 26px; margin: 0 0 15px;">Anıyı Yakala</h3>
                 
-                <!-- href kısmının içindeki tırnak işaretleri arasına kendi Google Photos bağlantını yapıştıracaksın -->
                 <a class="buton" href="BURAYA_GOOGLE_PHOTOS_LINKI_GELECEK" target="_blank" rel="noopener" style="width: 100%; max-width: 250px;">
                     Fotoğraf Yükle
                 </a>
@@ -602,7 +628,6 @@
         const muzikButonu = document.getElementById("muzikButonu");
         let caliyorMu = false;
 
-        // 🌟 YENİ: Ses seviyesini %20 (kısık) olarak ayarlıyoruz (0.0 ile 1.0 arasında değer alır)
         muzik.volume = 0.2;
 
         muzikButonu.addEventListener("click", function () {
@@ -621,19 +646,14 @@
         const acilisEkrani = document.getElementById("acilisEkrani");
 
         davetiAcButonu.addEventListener("click", function () {
-            // Tarayıcıyı anında en üste sabitler
             window.scrollTo({ top: 0, behavior: 'instant' });
-
             acilisEkrani.classList.add("gizli");
             document.body.classList.remove("kilitli");
             
-            // 🌟 YENİ: Daveti aç butonuna tıklandığında müziği otomatik başlat
             muzik.play().then(() => {
                 muzikButonu.classList.add("caliyor");
                 caliyorMu = true;
             }).catch(hata => {
-                // Eğer kullanıcının tarayıcısı aşırı katı bir pil tasarrufu modundaysa 
-                // hata vermesini engellemek için bu kısmı ekliyoruz.
                 console.log("Otomatik oynatma engellendi.");
             });
         });
