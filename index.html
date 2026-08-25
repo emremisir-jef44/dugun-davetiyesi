@@ -13,11 +13,9 @@
 
     <title>Zeynep & Samed | Nişan Davetiyesi</title>
 
-  <!-- Google Fonts (Lüks ve Estetik) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
-    
-    <!-- Kaligrafi Fontu (Great Vibes) -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Şık ve Okunabilir Yeni Fontlar) -->
+    <!-- Cinzel: Başlıklar, Lora: Genel Metinler, Alex Brush: İsimler -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
     <!-- AOS Animasyon Kütüphanesi CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -32,27 +30,29 @@
             --yazi: #2c362e;
             --gri: #68736a;
             --hata: #a33a3a;
-            --font-isim: 'Pinyon Script', cursive; 
-            --font-baslik: 'Cinzel', serif; 
-            --font-metin: 'Jost', sans-serif; 
+            
+            /* GÜNCELLENEN YAZI TİPLERİ */
+            --font-isim: 'Alex Brush', cursive; /* Okunması daha kolay, çok zarif kaligrafi */
+            --font-baslik: 'Cinzel', serif; /* Asil başlıklar */
+            --font-metin: 'Lora', serif; /* Şık ve estetik genel metin fontu */
         }
 
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: var(--font-metin); background: linear-gradient(180deg, #fbf9f6 0%, #ffffff 50%, #fbf9f6 100%); color: var(--yazi); line-height: 1.7; font-weight: 300; }
+        body { margin: 0; font-family: var(--font-metin); background: linear-gradient(180deg, #fbf9f6 0%, #ffffff 50%, #fbf9f6 100%); color: var(--yazi); line-height: 1.8; font-weight: 400; }
         body.kilitli { overflow: hidden; }
 
         .acilis-ekrani { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; background: radial-gradient(circle at top left, #ffffff, transparent 60%), var(--krem); transition: opacity 0.8s ease, visibility 0.8s ease; }
         .acilis-ekrani.gizli { opacity: 0; visibility: hidden; pointer-events: none; }
         
         .karsilama-karti { width: min(430px, 100%); padding: 55px 35px; text-align: center; background-color: rgba(251, 249, 246, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(194, 167, 112, 0.25); border-radius: 12px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08); }
-        .monogram { font-family: var(--font-isim); font-size: 65px; color: var(--altin); margin-bottom: 5px; line-height: 1; }
+        .monogram { font-family: var(--font-isim); font-size: 75px; color: var(--altin); margin-bottom: 5px; line-height: 1; }
         .monogram-amp { font-family: var(--font-baslik); font-size: 38px; color: var(--koyu-yesil); font-style: normal; }
-        .karsilama-tarih { font-size: 11px; font-weight: 500; letter-spacing: 5px; color: var(--gri); text-transform: uppercase; margin-bottom: 20px; font-family: var(--font-metin); }
+        .karsilama-tarih { font-size: 12px; font-weight: 500; letter-spacing: 5px; color: var(--gri); text-transform: uppercase; margin-bottom: 20px; font-family: var(--font-baslik); }
         .karsilama-karti h1 { margin: 0 0 15px; font-family: var(--font-baslik); font-size: 28px; font-weight: 500; color: var(--koyu-yesil); letter-spacing: 1px; }
-        .karsilama-karti p { margin: 0 0 30px; color: var(--gri); font-size: 14px; line-height: 1.8; }
+        .karsilama-karti p { margin: 0 0 30px; color: var(--gri); font-size: 15px; line-height: 1.8; font-style: italic; }
 
-        .buton { display: inline-block; padding: 14px 28px; border: none; border-radius: 999px; background-color: var(--koyu-yesil); color: white; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-metin); }
+        .buton { display: inline-block; padding: 14px 32px; border: none; border-radius: 999px; background-color: var(--koyu-yesil); color: white; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-metin); }
         .buton:hover { transform: translateY(-2px); background-color: var(--altin); box-shadow: 0 10px 20px rgba(194, 167, 112, 0.2); }
         .buton:disabled { opacity: 0.65; cursor: wait; transform: none; }
         .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 45px; }
@@ -69,24 +69,21 @@
         .video-overlay { position: absolute; inset: 0; background: rgba(251, 249, 246, 0.25); z-index: 1; } 
         .kapak-icerik { position: relative; z-index: 2; width: min(1220px, 100%); }
         
-        /* Nişan İçin "Evleniyoruz" Yazısı Kaldırıldı, Üst Yazı Gizlendi veya SİLİNDİ */
-        .ust-yazi { display: none; } /* Veya HTML'den tamamen silebiliriz, ben css ile gizledim */
-        
-        .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(85px, 11vw, 140px); font-weight: 400; line-height: 1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); position: relative; z-index: 2; }
-        .kapak h1 .ampersand { display: inline-block; margin: 0 0.1em; font-family: var(--font-baslik); font-size: 0.55em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
+        .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(90px, 12vw, 150px); font-weight: 400; line-height: 1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); position: relative; z-index: 2; }
+        .kapak h1 .ampersand { display: inline-block; margin: 0 0.1em; font-family: var(--font-baslik); font-size: 0.45em; color: var(--altin); font-style: normal; font-weight: 400; transform: translateY(-0.15em); }
         .tarih { margin: 15px 0 30px; font-size: 19px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: var(--koyu-yesil); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }
-        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 16px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); }
+        .davet-metni { max-width: 720px; margin: 0 auto 31px; font-size: 17px; line-height: 2; letter-spacing: 0.3px; color: var(--koyu-yesil); font-weight: 400; text-shadow: 0 2px 15px rgba(255,255,255,1); font-style: italic; }
 
         .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 750px; margin: 0 auto; }
         .sayac-kutusu { padding: 24px 10px; background-color: rgba(251, 249, 246, 0.9); border: 1px solid rgba(194, 167, 112, 0.3); border-radius: 12px; backdrop-filter: blur(8px); color: var(--koyu-yesil); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         .sayac-kutusu strong { display: block; font-family: var(--font-baslik); font-size: clamp(30px, 5vw, 42px); font-weight: 500; line-height: 1; }
-        .sayac-kutusu span { display: block; margin-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gri); font-weight: 500; }
+        .sayac-kutusu span { display: block; margin-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gri); font-weight: 500; font-family: var(--font-metin); }
 
         .bolum { padding: 100px 20px; overflow: hidden; }
         .bolum-krem { background-color: var(--krem); border-top: 1px solid rgba(194, 167, 112, 0.15); border-bottom: 1px solid rgba(194, 167, 112, 0.15); }
         .kapsayici { width: min(1120px, 100%); margin: 0 auto; }
         .bolum-basligi { margin: 0 0 15px; text-align: center; font-family: var(--font-baslik); font-size: clamp(36px, 5vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: 2px; color: var(--koyu-yesil); }
-        .bolum-aciklama { max-width: 690px; margin: 0 auto 60px; text-align: center; color: var(--gri); line-height: 1.9; font-size: 15px; }
+        .bolum-aciklama { max-width: 690px; margin: 0 auto 60px; text-align: center; color: var(--gri); line-height: 1.9; font-size: 16px; font-style: italic; }
 
         .program-listesi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .program-karti { padding: 35px 20px; text-align: center; background-color: white; border: 1px solid rgba(194, 167, 112, 0.15); border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.04); transition: transform 0.3s ease; }
@@ -103,7 +100,7 @@
         .form-karti { max-width: 720px; margin: auto; padding: 45px; background-color: white; border-radius: 16px; border: 1px solid rgba(194, 167, 112, 0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
         .form-satiri { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-alani { margin-bottom: 22px; }
-        .form-alani label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--koyu-yesil); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .form-alani label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--koyu-yesil); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-metin); }
         .form-alani input, .form-alani select, .form-alani textarea { width: 100%; padding: 15px; border: 1px solid #e8e3dc; border-radius: 8px; font: inherit; background-color: #fbf9f6; transition: all 0.3s ease; }
         .form-alani input:focus, .form-alani select:focus, .form-alani textarea:focus { outline: none; border-color: var(--altin); background-color: white; box-shadow: 0 0 0 3px rgba(194, 167, 112, 0.1); }
         .form-alani textarea { min-height: 120px; resize: vertical; }
@@ -113,16 +110,16 @@
         .gizli-alan { position: absolute; left: -9999px; }
 
         footer { padding: 60px 20px; text-align: center; color: white; background-color: var(--koyu-yesil); }
-        footer h2 { margin: 0 0 10px; font-family: var(--font-isim); font-size: 55px; font-weight: 400; color: var(--krem); line-height: 1; }
-        footer p { color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+        footer h2 { margin: 0 0 10px; font-family: var(--font-isim); font-size: 65px; font-weight: 400; color: var(--krem); line-height: 1; }
+        footer p { color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-metin); }
 
         @media (max-width: 750px) {
             .kapak { padding-top: 58px; padding-bottom: 58px; }
-            .kapak h1 { font-size: clamp(65px, 16vw, 90px); white-space: normal; line-height: 1; margin-top: 10px; }
+            .kapak h1 { font-size: clamp(75px, 18vw, 100px); white-space: normal; line-height: 1; margin-top: 10px; }
             .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
             .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
-            .kapak h1 .ampersand { display: block; margin: -5px 0; font-size: 0.5em; }
+            .kapak h1 .ampersand { display: block; margin: -10px 0; font-size: 0.4em; }
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
         }
 
@@ -164,7 +161,7 @@
         </div>
     </div>
 
-    <!-- ANA KAPAK (VİDEOLU YENİ TASARIM) -->
+    <!-- ANA KAPAK -->
     <header class="kapak" id="anaKapak">
         <!-- Arka Plan Videosu -->
         <video autoplay muted loop playsinline class="arkaplan-video">
@@ -174,6 +171,7 @@
         <div class="video-overlay"></div>
         
         <div class="kapak-icerik">
+            
             <h1>Zeynep <span class="ampersand">&amp;</span> Samed</h1>
             <div class="tarih">6 Mart 2027 · Cumartesi</div>
             
@@ -182,10 +180,8 @@
             </p>
 
             <div class="buton-grubu">
-                <a class="buton" href="#katilim">Katılımını Bildir</a>
-                <a class="buton seffaf" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Zeynep+ve+Samed+Nişanı&dates=20270306T160000Z/20270306T200000Z&details=En+mutlu+günümüzde+sizleri+de+bekliyoruz.&location=Nova+Organizasyon+Davet+Evi" target="_blank" rel="noopener">
-                    Takvime Ekle 📅
-                </a>
+                <!-- Katılım ve Takvim butonları yerine tek adres butonu eklendi -->
+                <a class="buton" href="#adres">Adres Bilgisi 📍</a>
             </div>
 
             <div class="geri-sayim" id="geriSayim">
@@ -229,7 +225,7 @@
     </section>
 
     <!-- MEKÂN -->
-    <section class="bolum">
+    <section class="bolum" id="adres">
         <div class="kapsayici">
             <h2 class="bolum-basligi" data-aos="fade-up">Nişan Mekânı</h2>
             <p class="bolum-aciklama" data-aos="fade-up">Yol tarifi almak için aşağıdaki düğmeye basabilirsiniz.</p>
@@ -382,10 +378,9 @@
             const dosya = e.target.files[0];
             if (!dosya) return;
 
-            const eskiYazi = buton.innerHTML; // Hangi butona basıldıysa onun yazısını tut
+            const eskiYazi = buton.innerHTML; 
             buton.textContent = "Yükleniyor... ⏳";
             
-            // Yükleme sırasında butonları pasifleştir
             fotoCekButon.style.pointerEvents = "none";
             fotoYukleButon.style.pointerEvents = "none";
             fotoCekButon.style.opacity = "0.6";
@@ -393,15 +388,11 @@
             fotoMesaj.textContent = "";
 
             try {
-                // Her fotoğraf için rastgele ve benzersiz bir dosya adı oluştur
                 const dosyaAdi = Date.now() + "_" + Math.random().toString(36).substring(7) + ".jpg";
-                // Yüklenecek hedef: nisan_fotograflari klasörü
                 const storageRef = ref(storage, 'nisan_fotograflari/' + dosyaAdi);
                 
-                // Firebase'e fotoğrafı gönder
                 await uploadBytes(storageRef, dosya);
                 
-                // Başarılı mesajı göster
                 fotoMesaj.textContent = "Harika! Fotoğraf albüme eklendi.";
                 fotoMesaj.style.color = "var(--koyu-yesil)";
             } catch (hata) {
@@ -409,17 +400,15 @@
                 fotoMesaj.textContent = "Yüklenirken bir sorun oluştu, lütfen internetini kontrol et.";
                 fotoMesaj.style.color = "var(--hata)";
             } finally {
-                // Yükleme bitince butonları eski haline döndür
                 buton.innerHTML = eskiYazi;
                 fotoCekButon.style.pointerEvents = "auto";
                 fotoYukleButon.style.pointerEvents = "auto";
                 fotoCekButon.style.opacity = "1";
                 fotoYukleButon.style.opacity = "1";
-                e.target.value = ""; // Input'u temizle
+                e.target.value = ""; 
             }
         }
 
-        // Inputlardaki "change" olayını dinle
         kameraInput.addEventListener("change", (e) => dosyaYukle(e, fotoCekButon));
         galeriInput.addEventListener("change", (e) => dosyaYukle(e, fotoYukleButon));
     </script>
