@@ -119,7 +119,6 @@
         .mekan-karti h3 { margin: 10px 0; font-family: var(--font-baslik); font-size: 32px; font-weight: 500; letter-spacing: 1px; }
         .mekan-karti p { margin-bottom: 25px; font-size: 16px; color: var(--gri); }
         
-        /* HARİTA ALANI EKLENDİ */
         .harita-alani { width: 100%; height: 350px; border-radius: 12px; overflow: hidden; margin-bottom: 25px; border: 1px solid rgba(193, 161, 103, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .harita-alani iframe { width: 100%; height: 100%; border: 0; }
 
@@ -448,52 +447,69 @@
             caliyorMu = !caliyorMu;
         });
 
-        // 🌟 KURŞUN GEÇİRMEZ ZARF AÇILIŞ MANTIĞI (Hatadan Arındırıldı) 🌟
+        // 🌟 KURŞUN GEÇİRMEZ ZARF AÇILIŞ MANTIĞI (TAMAMEN ÇÖZÜLDÜ) 🌟
         const acilisEkrani = document.getElementById("acilisEkrani");
         const zarfVideo = document.getElementById("zarfVideo");
         const zarfYazisi = document.getElementById("zarfYazisi");
         const arkaplanVideo = document.getElementById('arkaplanVideo');
         let zarfAcildiMi = false;
-
-        acilisEkrani.addEventListener("click", function () {
-            if (zarfAcildiMi) return; 
-            zarfAcildiMi = true;
-            
-            zarfYazisi.style.opacity = "0";
-            
-            // Videoyu oynatmayı dene
-            const playPromise = zarfVideo.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Video sorunsuz oynarsa bitmesini bekle
-                }).catch(e => {
-                    console.log("Zarf video oynatılamadı, zorunlu geçiş yapılıyor:", e);
-                    siteyiAc();
-                });
-            }
-
-            // Müzik çalmayı dene
-            muzik.play().then(() => {
-                muzikButonu.classList.add("aktif");
-                muzikButonu.classList.add("caliyor");
-                caliyorMu = true;
-            }).catch(e => console.log("Müzik otomatik başlatılamadı"));
-        });
-
-        // Video normal şekilde bittiğinde siteyi aç
-        zarfVideo.addEventListener('ended', () => {
-            siteyiAc();
-        });
+        let siteAcildi = false;
 
         // Ana siteye geçişi sağlayan çekirdek fonksiyon
         function siteyiAc() {
+            if (siteAcildi) return; // İki kere çalışmasını engeller
+            siteAcildi = true;
+            
             acilisEkrani.classList.add("gizli");
             document.body.classList.remove("kilitli");
             window.scrollTo(0, 0); 
             
             arkaplanVideo.play().catch(e => console.log("Arka plan video otomatik oynatılamadı"));
         }
+
+        acilisEkrani.addEventListener("click", function () {
+            if (zarfAcildiMi) return; 
+            zarfAcildiMi = true;
+            
+            zarfYazisi.style.opacity = "0";
+
+            // Müzik çalmayı dene
+            muzik.play().then(() => {
+                muzikButonu.classList.add("aktif");
+                muzikButonu.classList.add("caliyor");
+                caliyorMu = true;
+            }).catch(e => console.log("Müzik hatası"));
+            
+            // KRİTİK KONTROL: Eğer video dosyası GitHub'da yoksa veya bozuksa anında siteyi aç!
+            if (zarfVideo.readyState === 0) {
+                console.log("Video dosyası bulunamadı veya yüklenemedi, direkt geçiliyor!");
+                siteyiAc();
+                return;
+            }
+            
+            // Videoyu oynatmayı dene
+            const playPromise = zarfVideo.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Video sorunsuz oynarsa, süresi kadar bekle (maksimum acil durum süresi)
+                    const videoSuresi = (zarfVideo.duration || 5) * 1000;
+                    setTimeout(siteyiAc, videoSuresi + 1000);
+                }).catch(e => {
+                    // Tarayıcı videoyu engellerse anında geçiş yap
+                    siteyiAc();
+                });
+            } else {
+                // Promise dönmeyen eski tarayıcılar için yedek süre
+                setTimeout(siteyiAc, 2000);
+            }
+        });
+
+        // Video normal şekilde bittiğinde siteyi aç
+        zarfVideo.addEventListener('ended', siteyiAc);
+        
+        // Videoda bir hata oluşursa (Örn: 404 Not Found) anında siteyi aç
+        zarfVideo.addEventListener('error', siteyiAc);
 
         // GERİ SAYIM
         const nisanTarihi = new Date("2027-03-06T19:00:00+03:00").getTime();
