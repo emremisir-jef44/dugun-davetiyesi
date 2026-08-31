@@ -11,6 +11,7 @@
 
     <title>Zeynep & Samed | Nişan Davetiyesi</title>
 
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -76,12 +77,13 @@
         .kapak { position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 70px 20px; text-align: center; color: var(--yazi); }
         
         .arkaplan-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
-        .video-overlay { position: absolute; inset: 0; background: rgba(251, 249, 246, 0.25); z-index: 1; } 
+        .video-overlay { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.2); z-index: 1; } 
         
-        .kapak-icerik { position: relative; z-index: 2; width: min(1000px, 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .kapak-icerik { position: relative; z-index: 2; width: min(1000px, 100%); height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
         .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(85px, 12vw, 140px); font-weight: 400; line-height: 1.1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); }
         
+        /* AMPERSAND İŞARETİ */
         .kapak h1 .ampersand { 
             display: inline-block; 
             margin: 0 0.1em; 
@@ -94,6 +96,7 @@
 
         .tarih { margin: 10px 0 25px; font-size: 16px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--yazi); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }
         
+        /* SAYAÇ */
         .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; max-width: 380px; margin: 0 auto 25px auto; }
         .sayac-kutusu { padding: 12px 5px; background-color: rgba(255, 255, 255, 0.85); border: 1px solid rgba(193, 161, 103, 0.3); border-radius: 10px; backdrop-filter: blur(8px); color: var(--yazi); box-shadow: 0 10px 25px rgba(78, 115, 84, 0.1); }
         .sayac-kutusu strong { display: block; font-family: var(--font-baslik); font-size: 24px; font-weight: 500; line-height: 1; }
@@ -114,13 +117,10 @@
         .program-karti strong { display: block; color: var(--altin); font-size: 22px; font-family: var(--font-baslik); font-weight: 500; }
         .program-karti h3 { margin: 8px 0 0; font-family: var(--font-baslik); color: var(--yazi); font-weight: 500; font-size: 18px; letter-spacing: 1px; }
 
-        .mekan-karti { max-width: 800px; margin: auto; padding: 40px 30px; text-align: center; color: var(--yazi); background-color: white; border-radius: 16px; border: 1px solid rgba(193, 161, 103, 0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.06); }
+        .mekan-karti { max-width: 750px; margin: auto; padding: 50px 30px; text-align: center; color: var(--yazi); background-color: white; border-radius: 16px; border: 1px solid rgba(193, 161, 103, 0.25); box-shadow: 0 20px 50px rgba(78, 115, 84, 0.08); }
         .mekan-karti .mekan-ikon { font-size: 42px; margin-bottom: 10px; }
         .mekan-karti h3 { margin: 10px 0; font-family: var(--font-baslik); font-size: 32px; font-weight: 500; letter-spacing: 1px; }
-        .mekan-karti p { margin-bottom: 25px; font-size: 16px; color: var(--gri); }
-        
-        .harita-alani { width: 100%; height: 350px; border-radius: 12px; overflow: hidden; margin-bottom: 25px; border: 1px solid rgba(193, 161, 103, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .harita-alani iframe { width: 100%; height: 100%; border: 0; }
+        .mekan-karti .buton { margin-top: 20px; }
 
         /* DAVETLİ KAMERASI */
         .kamera-karti { background-color: white; border: 1px solid rgba(193, 161, 103, 0.2); border-radius: 16px; max-width: 500px; margin: 0 auto; box-shadow: 0 20px 50px rgba(78, 115, 84, 0.08); overflow: hidden; }
@@ -144,16 +144,17 @@
 
         /* MOBİL UYARLAMALAR */
         @media (max-width: 750px) {
-            .kapak { padding-top: 58px; padding-bottom: 58px; }
+            .kapak { padding: 0; }
             .zarfi-ac-yazisi { font-size: 14px; bottom: 10%; }
             
             .kapak h1 { font-size: clamp(75px, 18vw, 100px); white-space: normal; line-height: 0.9; margin-top: 5px; }
             
+            /* Mobilde Amperand Orantısı */
             .kapak h1 .ampersand { display: block; margin: -5px 0 -5px 0; font-size: 0.8em; transform: none; line-height: 1; }
 
             .tarih { font-size: 14px; letter-spacing: 3px; margin: 15px 0 20px; }
             
-            .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .geri-sayim { gap: 8px; max-width: 320px; margin-bottom: 25px; }
             .sayac-kutusu { padding: 10px 5px; border-radius: 8px; }
             .sayac-kutusu strong { font-size: 20px; }
             .sayac-kutusu span { font-size: 8px; margin-top: 3px; }
@@ -161,7 +162,6 @@
             .buton-grubu { margin-bottom: 10px; }
             .form-satiri { grid-template-columns: 1fr; gap: 0; }
             .program-listesi { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .harita-alani { height: 250px; }
         }
 
         @media (max-width: 430px) {
@@ -172,18 +172,19 @@
             .program-karti h3 { font-size: 14px; margin-top: 6px; }
 
             .form-karti { padding: 25px 15px; }
-            .mekan-karti { padding: 30px 15px; }
         }
     </style>
 </head>
 
 <body class="kilitli">
 
+    <!-- ARKA PLAN MÜZİĞİ -->
     <button id="muzikButonu" class="muzik-buton">🎵</button>
     <audio id="arkaPlanMuzigi" loop>
         <source src="muzik.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- ZARF AÇILIŞ EKRANI -->
     <div class="acilis-ekrani" id="acilisEkrani">
         <video id="zarfVideo" class="zarf-video" playsinline muted preload="auto">
             <source src="images/giris-zarf-2.mp4#t=0.001" type="video/mp4">
@@ -192,15 +193,18 @@
         <div class="zarfi-ac-yazisi" id="zarfYazisi">Ekrana Tıklayınız</div>
     </div>
 
+    <!-- ANA KAPAK -->
     <header class="kapak" id="anaKapak">
+        <!-- Arka Plan Videosu -->
         <video id="arkaplanVideo" muted playsinline loop class="arkaplan-video" preload="auto">
             <source src="images/arkaplan2.mp4" type="video/mp4">
         </video>
         
         <div class="video-overlay"></div>
         
+        <!-- YAZILARIN SABİT KALDIĞI ANA İÇERİK BÖLÜMÜ -->
         <div class="kapak-icerik">
-            <h1>Zeynep <span class="ampersand">&</span> Samed</h1>
+            <h1>Zeynep <span class="ampersand">&amp;</span> Samed</h1>
             <div class="tarih">6 Mart 2027 · Cumartesi</div>
             
             <div class="geri-sayim" id="geriSayim">
@@ -216,6 +220,7 @@
         </div>
     </header>
 
+    <!-- NİŞAN PROGRAMI -->
     <section class="bolum">
         <div class="kapsayici">
             <h2 class="bolum-basligi" data-aos="fade-up">Nişan Programı</h2>
@@ -246,25 +251,22 @@
         </div>
     </section>
 
+    <!-- MEKÂN -->
     <section class="bolum bolum-krem" id="mekan">
         <div class="kapsayici">
             <h2 class="bolum-basligi" data-aos="fade-up">Nişan Mekânı</h2>
-            <p class="bolum-aciklama" data-aos="fade-up">Yol tarifi almak için aşağıdaki haritayı kullanabilir veya düğmeye basabilirsiniz.</p>
+            <p class="bolum-aciklama" data-aos="fade-up">Yol tarifi almak için aşağıdaki düğmeye basabilirsiniz.</p>
 
             <div class="mekan-karti" data-aos="zoom-in">
                 <div class="mekan-ikon">📍</div>
                 <h3>Nova Organizasyon Davet Evi</h3>
                 <p>6 Mart 2027 · Saat 19.00</p>
-                
-                <div class="harita-alani">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3011.6663249053896!2d28.870631215413346!3d40.98877237930263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabbd2f2c8d23b%3A0xc316ccb1307bcf2f!2sNova%20Organizasyon%20Davet%20Evi!5e0!3m2!1str!2str!4v1689254300000!5m2!1str!2str" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-
-                <a class="buton" href="https://maps.app.goo.gl/g8xoDUnGt5wtVPb26" target="_blank" rel="noopener">Harita Uygulamasında Aç</a>
+                <a class="buton" href="https://maps.app.goo.gl/g8xoDUnGt5wtVPb26" target="_blank" rel="noopener">Haritada Aç</a>
             </div>
         </div>
     </section>
 
+    <!-- DAVETLİ KAMERASI -->
     <section class="bolum" id="ani-yakala">
         <div class="kapsayici" style="text-align: center;">
             <h2 class="bolum-basligi" data-aos="fade-up">Sizin Gözünüzden Biz</h2>
@@ -280,10 +282,12 @@
                 <div style="padding: 35px 20px;">
                     <h3 style="font-family: var(--font-baslik); color: var(--yazi); font-size: 28px; margin: 0 0 20px; font-weight: 500;">Anıyı Yakala</h3>
                     
+                    <!-- GİZLİ DOSYA GİRDİLERİ -->
                     <input type="file" accept="image/*" capture="environment" id="kameraGirdisi" style="display: none;">
                     <input type="file" accept="image/*" id="galeriGirdisi" style="display: none;">
                     
-                    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center;">
+                    <!-- KAMERA VE GALERİ İÇİN BUTONLAR -->
+                    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; margin-top: 10px;">
                         <button class="buton" id="fotoCekButonu" style="width: 100%; max-width: 250px; cursor: pointer; border: none; font-family: var(--font-baslik);">
                             📸 Fotoğraf Çek
                         </button>
@@ -292,12 +296,14 @@
                         </button>
                     </div>
                     
+                    <!-- YÜKLEME MESAJI -->
                     <p id="fotoMesaj" style="margin-top: 20px; font-size: 14px; font-weight: 500;"></p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- KATILIM FORMU -->
     <section class="bolum bolum-krem" id="katilim">
         <div class="kapsayici">
             <h2 class="bolum-basligi" data-aos="fade-up">Katılım Bildirimi</h2>
@@ -347,14 +353,17 @@
         </div>
     </section>
 
+    <!-- SAYFA SONU -->
     <footer>
         <h2>Zeynep & Samed</h2>
         <p>Sizi aramızda görmek için sabırsızlanıyoruz.</p>
         <p>6 Mart 2027</p>
     </footer>
 
+    <!-- JAVASCRIPT KÜTÜPHANELERİ VE SCRIPTLER -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+    <!-- FİREBASE SDK'LARI -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
@@ -429,11 +438,10 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // MÜZİK ÇALAR KONTROLÜ
+        // MÜZİK ÇALAR
         const muzik = document.getElementById("arkaPlanMuzigi");
         const muzikButonu = document.getElementById("muzikButonu");
         let caliyorMu = false;
-
         muzik.volume = 0.2;
 
         muzikButonu.addEventListener("click", function () {
@@ -447,69 +455,36 @@
             caliyorMu = !caliyorMu;
         });
 
-        // 🌟 KURŞUN GEÇİRMEZ ZARF AÇILIŞ MANTIĞI (TAMAMEN ÇÖZÜLDÜ) 🌟
+        // ZARF AÇILIŞ MANTIĞI
         const acilisEkrani = document.getElementById("acilisEkrani");
         const zarfVideo = document.getElementById("zarfVideo");
         const zarfYazisi = document.getElementById("zarfYazisi");
         const arkaplanVideo = document.getElementById('arkaplanVideo');
         let zarfAcildiMi = false;
-        let siteAcildi = false;
-
-        // Ana siteye geçişi sağlayan çekirdek fonksiyon
-        function siteyiAc() {
-            if (siteAcildi) return; // İki kere çalışmasını engeller
-            siteAcildi = true;
-            
-            acilisEkrani.classList.add("gizli");
-            document.body.classList.remove("kilitli");
-            window.scrollTo(0, 0); 
-            
-            arkaplanVideo.play().catch(e => console.log("Arka plan video otomatik oynatılamadı"));
-        }
 
         acilisEkrani.addEventListener("click", function () {
             if (zarfAcildiMi) return; 
             zarfAcildiMi = true;
             
             zarfYazisi.style.opacity = "0";
-
-            // Müzik çalmayı dene
+            
+            zarfVideo.play().catch(e => console.log("Zarf video oynatılamadı:", e));
+            
             muzik.play().then(() => {
                 muzikButonu.classList.add("aktif");
                 muzikButonu.classList.add("caliyor");
                 caliyorMu = true;
-            }).catch(e => console.log("Müzik hatası"));
-            
-            // KRİTİK KONTROL: Eğer video dosyası GitHub'da yoksa veya bozuksa anında siteyi aç!
-            if (zarfVideo.readyState === 0) {
-                console.log("Video dosyası bulunamadı veya yüklenemedi, direkt geçiliyor!");
-                siteyiAc();
-                return;
-            }
-            
-            // Videoyu oynatmayı dene
-            const playPromise = zarfVideo.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Video sorunsuz oynarsa, süresi kadar bekle (maksimum acil durum süresi)
-                    const videoSuresi = (zarfVideo.duration || 5) * 1000;
-                    setTimeout(siteyiAc, videoSuresi + 1000);
-                }).catch(e => {
-                    // Tarayıcı videoyu engellerse anında geçiş yap
-                    siteyiAc();
-                });
-            } else {
-                // Promise dönmeyen eski tarayıcılar için yedek süre
-                setTimeout(siteyiAc, 2000);
-            }
+            }).catch(e => console.log("Müzik otomatik başlatılamadı"));
         });
 
-        // Video normal şekilde bittiğinde siteyi aç
-        zarfVideo.addEventListener('ended', siteyiAc);
-        
-        // Videoda bir hata oluşursa (Örn: 404 Not Found) anında siteyi aç
-        zarfVideo.addEventListener('error', siteyiAc);
+        // Zarf animasyonu bittiğinde ana siteye geç
+        zarfVideo.addEventListener('ended', () => {
+            acilisEkrani.classList.add("gizli");
+            document.body.classList.remove("kilitli");
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            arkaplanVideo.play();
+        });
 
         // GERİ SAYIM
         const nisanTarihi = new Date("2027-03-06T19:00:00+03:00").getTime();
@@ -543,25 +518,15 @@
 
             try {
                 const formVerileri = new FormData(katilimFormu);
-                const cevap = await fetch(katilimFormu.action, {
-                    method: katilimFormu.method,
-                    body: formVerileri,
-                    headers: { "Accept": "application/json" }
-                });
-
+                const cevap = await fetch(katilimFormu.action, { method: katilimFormu.method, body: formVerileri, headers: { "Accept": "application/json" } });
                 if (!cevap.ok) throw new Error("Form gönderilemedi.");
-
                 const isim = document.getElementById("isim").value.trim();
                 const durum = document.getElementById("durum").value;
-
-                formMesaji.textContent = (durum === "Evet, katılacağım") 
-                    ? "Teşekkürler " + isim + "! Cevabınız alındı. Sizi aramızda görmek için sabırsızlanıyoruz." 
-                    : "Teşekkürler " + isim + ". Cevabınız başarıyla alındı.";
-                
+                formMesaji.textContent = (durum === "Evet, katılacağım") ? "Teşekkürler " + isim + "! Sizi aramızda görmek için sabırsızlanıyoruz." : "Teşekkürler " + isim + ". Cevabınız alındı.";
                 formMesaji.classList.add("basarili");
                 katilimFormu.reset();
             } catch (hata) {
-                formMesaji.textContent = "Cevabınız gönderilemedi. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.";
+                formMesaji.textContent = "Gönderilemedi. İnternet bağlantınızı kontrol edin.";
                 formMesaji.classList.add("hatali");
             } finally {
                 gonderButonu.disabled = false;
