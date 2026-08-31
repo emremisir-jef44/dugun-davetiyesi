@@ -43,18 +43,11 @@
         }
         body.kilitli { overflow: hidden; }
 
-        /* ZARF AÇILIŞ EKRANI */
+        /* ZARF AÇILIŞ EKRANI (YAZISIZ VE SADECE VİDEOLU) */
         .acilis-ekrani { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background-color: #f7f3ec; transition: opacity 1.2s ease, visibility 1.2s ease; cursor: pointer; }
         .acilis-ekrani.gizli { opacity: 0; visibility: hidden; pointer-events: none; }
         
         .zarf-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-        
-        .zarfi-ac-yazisi { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); font-family: var(--font-baslik); font-size: 18px; font-weight: 600; letter-spacing: 4px; color: var(--yazi); text-transform: uppercase; text-shadow: 0 0 15px rgba(255, 255, 255, 0.9); z-index: 2; animation: nefes 2s infinite ease-in-out; pointer-events: none; white-space: nowrap; background: rgba(255,255,255,0.4); padding: 10px 25px; border-radius: 50px; backdrop-filter: blur(5px); transition: opacity 0.5s ease; }
-        
-        @keyframes nefes {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            50% { transform: translateX(-50%) scale(1.05); opacity: 1; }
-        }
 
         /* BUTONLAR */
         .buton { display: inline-block; padding: 14px 35px; border: none; border-radius: 999px; background-color: var(--yazi); color: white; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-metin); }
@@ -65,7 +58,7 @@
 
         .buton-grubu { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 10px; margin-bottom: 30px; pointer-events: auto; }
         
-        /* MÜZİK */
+        /* MÜZİK BUTONU */
         .muzik-buton { position: fixed; bottom: 20px; right: 20px; z-index: 999; background-color: var(--altin); color: white; border: none; border-radius: 50%; width: 55px; height: 55px; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.3s ease, background-color 0.3s ease, opacity 1s ease; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; }
         .muzik-buton.aktif { opacity: 1; pointer-events: auto; }
         .muzik-buton:hover { background-color: var(--koyu-altin); transform: scale(1.1); }
@@ -82,7 +75,6 @@
 
         .kapak h1 { margin: 0; font-family: var(--font-isim); font-size: clamp(85px, 12vw, 140px); font-weight: 400; line-height: 1.1; letter-spacing: 2px; text-shadow: 0 4px 30px rgba(255,255,255,1); }
         
-        /* ZEYNEP & SAMED HİZALAMASI (ÖZEL AYARLANDI) */
         .isim-zeynep { display: inline-block; transform: translateY(-8px); }
         
         .kapak h1 .ampersand { 
@@ -99,7 +91,7 @@
 
         .tarih { margin: 10px 0 25px; font-size: 16px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--yazi); text-shadow: 0 2px 15px rgba(255,255,255,1); font-family: var(--font-baslik); }
         
-        /* BÜYÜTÜLMÜŞ SAYAÇ */
+        /* BÜYÜK SAYAÇ */
         .geri-sayim { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; width: 100%; max-width: 500px; margin: 0 auto 30px auto; }
         .sayac-kutusu { padding: 18px 10px; background-color: rgba(255, 255, 255, 0.85); border: 1px solid rgba(193, 161, 103, 0.3); border-radius: 12px; backdrop-filter: blur(8px); color: var(--yazi); box-shadow: 0 10px 25px rgba(78, 115, 84, 0.1); }
         .sayac-kutusu strong { display: block; font-family: var(--font-baslik); font-size: 32px; font-weight: 500; line-height: 1; }
@@ -135,18 +127,15 @@
         /* MOBİL UYARLAMALAR */
         @media (max-width: 750px) {
             .kapak { padding-top: 58px; padding-bottom: 58px; }
-            .zarfi-ac-yazisi { font-size: 14px; bottom: 10%; }
             
             .kapak h1 { display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: clamp(75px, 18vw, 100px); white-space: normal; line-height: 1; margin-top: 5px; }
             
-            /* Zeynep ismini özel olarak yukarı çektik */
             .isim-zeynep { transform: translateY(-10px); }
             .kapak h1 .ampersand { display: block; margin: 0; font-size: 0.8em; transform: translateY(-4px); }
             .isim-samed { transform: translateY(0); }
 
             .tarih { font-size: 14px; letter-spacing: 3px; margin: 15px 0 25px; }
             
-            /* SAYAÇ BÜYÜTÜLDÜ (2x2 IZGARA) */
             .geri-sayim { grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 320px; margin-bottom: 30px; }
             .sayac-kutusu { padding: 20px 10px; border-radius: 12px; }
             .sayac-kutusu strong { font-size: 34px; }
@@ -177,10 +166,8 @@
 
     <div class="acilis-ekrani" id="acilisEkrani">
         <video id="zarfVideo" class="zarf-video" playsinline muted preload="auto">
-            <source src="images/giris-zarf-2.mp4#t=0.001" type="video/mp4">
+            <source src="images/giris-zarf-1.mp4#t=0.001" type="video/mp4">
         </video>
-        
-        <div class="zarfi-ac-yazisi" id="zarfYazisi">Ekrana Tıklayınız</div>
     </div>
 
     <header class="kapak" id="anaKapak">
@@ -389,15 +376,13 @@
             caliyorMu = !caliyorMu;
         });
 
-        // KURŞUN GEÇİRMEZ ZARF AÇILIŞ MANTIĞI
+        // ZARF AÇILIŞ VE SİTEYE GEÇİŞ MANTIĞI
         const acilisEkrani = document.getElementById("acilisEkrani");
         const zarfVideo = document.getElementById("zarfVideo");
-        const zarfYazisi = document.getElementById("zarfYazisi");
         const arkaplanVideo = document.getElementById('arkaplanVideo');
         let zarfAcildiMi = false;
         let siteAcildi = false;
 
-        // Ana siteye geçişi sağlayan çekirdek fonksiyon
         function siteyiAc() {
             if (siteAcildi) return; 
             siteAcildi = true;
@@ -406,14 +391,13 @@
             document.body.classList.remove("kilitli");
             window.scrollTo(0, 0); 
             
-            arkaplanVideo.play().catch(e => console.log("Arka plan video otomatik oynatılamadı"));
+            arkaplanVideo.play().catch(e => console.log("Arka plan video oynatılamadı"));
         }
 
+        // Tıklanınca video başlar ve müzik çalar
         acilisEkrani.addEventListener("click", function () {
             if (zarfAcildiMi) return; 
             zarfAcildiMi = true;
-            
-            zarfYazisi.style.opacity = "0";
 
             muzik.play().then(() => {
                 muzikButonu.classList.add("aktif");
@@ -421,30 +405,26 @@
                 caliyorMu = true;
             }).catch(e => console.log("Müzik hatası"));
             
-            if (zarfVideo.readyState === 0) {
-                console.log("Video dosyası bulunamadı veya yüklenemedi, direkt geçiliyor!");
-                siteyiAc();
-                return;
-            }
-            
+            // Eğer video yoksa veya oynatılamazsa anında siteyi aç
             const playPromise = zarfVideo.play();
             
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    const videoSuresi = (zarfVideo.duration || 5) * 1000;
-                    setTimeout(siteyiAc, videoSuresi + 1000);
+                    // Video oynatılmaya başladı
                 }).catch(e => {
+                    console.log("Zarf videosu oynatılamadı, direkt geçiliyor:", e);
                     siteyiAc();
                 });
             } else {
-                setTimeout(siteyiAc, 2000);
+                siteyiAc();
             }
         });
 
+        // Video bittiğinde otomatik olarak ana siteye geç
         zarfVideo.addEventListener('ended', siteyiAc);
         zarfVideo.addEventListener('error', siteyiAc);
 
-        // GERİ SAYIM (YENİ TARİHE GÖRE GÜNCELLENDİ)
+        // GERİ SAYIM
         const nisanTarihi = new Date("2026-10-17T19:00:00+03:00").getTime();
         function geriSayimiGuncelle() {
             const simdi = new Date().getTime();
