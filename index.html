@@ -301,4 +301,257 @@
 
     <section class="bolum bolum-krem" id="katilim">
         <div class="kapsayici">
-            <h2 class="bolum-bas
+            <h2 class="bolum-basligi" data-aos="fade-up">Katılım Bildirimi</h2>
+            <p class="bolum-aciklama" data-aos="fade-up">Katılım durumunuzu aşağıdaki form aracılığıyla bildirebilirsiniz.</p>
+
+            <form class="form-karti" id="katilimFormu" action="https://formspree.io/f/xeeybnya" method="POST" data-aos="fade-up">
+                <input type="hidden" name="_subject" value="Zeynep ve Samed Nişan Katılım Cevabı">
+                <div class="gizli-alan" aria-hidden="true">
+                    <label for="website">Bu alanı boş bırakın</label>
+                    <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-satiri">
+                    <div class="form-alani">
+                        <label for="isim">Adınız ve soyadınız</label>
+                        <input type="text" id="isim" name="Ad Soyad" placeholder="Adınız ve soyadınız" required>
+                    </div>
+                    <div class="form-alani">
+                        <label for="durum">Katılacak mısınız?</label>
+                        <select id="durum" name="Katılım Durumu" required>
+                            <option value="">Seçiniz</option>
+                            <option value="Evet, katılacağım">Evet, katılacağım</option>
+                            <option value="Maalesef katılamayacağım">Maalesef katılamayacağım</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-satiri">
+                    <div class="form-alani">
+                        <label for="kisiSayisi">Katılımcı sayısı</label>
+                        <input type="number" id="kisiSayisi" name="Katılımcı Sayısı" min="1" max="10" value="1" required>
+                    </div>
+                    <div class="form-alani">
+                        <label for="sarki">Şarkı isteğiniz</label>
+                        <input type="text" id="sarki" name="Şarkı İsteği" placeholder="Sanatçı ve şarkı adı">
+                    </div>
+                </div>
+
+                <div class="form-alani">
+                    <label for="mesaj">Çifte mesajınız</label>
+                    <textarea id="mesaj" name="Çifte Mesaj" placeholder="Güzel dileklerinizi buraya yazabilirsiniz..."></textarea>
+                </div>
+
+                <button class="buton" id="gonderButonu" type="submit">Cevabımı Gönder</button>
+                <p class="form-mesaji" id="formMesaji" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Zeynep & Samed</h2>
+        <p>Sizi aramızda görmek için sabırsızlanıyoruz.</p>
+        <p>6 Mart 2027</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB06k_gS-PpokOab6nGFPKo-FGBXSmnZH4",
+            authDomain: "abdulsamed-zeynep-wedding.firebaseapp.com",
+            projectId: "abdulsamed-zeynep-wedding",
+            storageBucket: "abdulsamed-zeynep-wedding.firebasestorage.app",
+            messagingSenderId: "824468575238",
+            appId: "1:824468575238:web:91cd98bcbcf04aa8155f87"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+
+        const fotoCekButon = document.getElementById("fotoCekButonu");
+        const fotoYukleButon = document.getElementById("fotoYukleButonu");
+        const kameraInput = document.getElementById("kameraGirdisi");
+        const galeriInput = document.getElementById("galeriGirdisi");
+        const fotoMesaj = document.getElementById("fotoMesaj");
+
+        fotoCekButon.addEventListener("click", (e) => {
+            e.preventDefault();
+            kameraInput.click();
+        });
+
+        fotoYukleButon.addEventListener("click", (e) => {
+            e.preventDefault();
+            galeriInput.click();
+        });
+
+        async function dosyaYukle(e, buton) {
+            const dosya = e.target.files[0];
+            if (!dosya) return;
+
+            const eskiYazi = buton.innerHTML; 
+            buton.textContent = "Yükleniyor... ⏳";
+            
+            fotoCekButon.style.pointerEvents = "none";
+            fotoYukleButon.style.pointerEvents = "none";
+            fotoCekButon.style.opacity = "0.6";
+            fotoYukleButon.style.opacity = "0.6";
+            fotoMesaj.textContent = "";
+
+            try {
+                const dosyaAdi = Date.now() + "_" + Math.random().toString(36).substring(7) + ".jpg";
+                const storageRef = ref(storage, 'nisan_fotograflari/' + dosyaAdi);
+                
+                await uploadBytes(storageRef, dosya);
+                
+                fotoMesaj.textContent = "Harika! Fotoğraf albüme eklendi.";
+                fotoMesaj.style.color = "var(--yazi)";
+            } catch (hata) {
+                console.error("Firebase Yükleme Hatası:", hata);
+                fotoMesaj.textContent = "Yüklenirken bir sorun oluştu, lütfen internetini kontrol et.";
+                fotoMesaj.style.color = "var(--hata)";
+            } finally {
+                buton.innerHTML = eskiYazi;
+                fotoCekButon.style.pointerEvents = "auto";
+                fotoYukleButon.style.pointerEvents = "auto";
+                fotoCekButon.style.opacity = "1";
+                fotoYukleButon.style.opacity = "1";
+                e.target.value = ""; 
+            }
+        }
+
+        kameraInput.addEventListener("change", (e) => dosyaYukle(e, fotoCekButon));
+        galeriInput.addEventListener("change", (e) => dosyaYukle(e, fotoYukleButon));
+    </script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // MÜZİK ÇALAR KONTROLÜ
+        const muzik = document.getElementById("arkaPlanMuzigi");
+        const muzikButonu = document.getElementById("muzikButonu");
+        let caliyorMu = false;
+
+        muzik.volume = 0.2;
+
+        muzikButonu.addEventListener("click", function () {
+            if (caliyorMu) {
+                muzik.pause();
+                muzikButonu.classList.remove("caliyor");
+            } else {
+                muzik.play();
+                muzikButonu.classList.add("caliyor");
+            }
+            caliyorMu = !caliyorMu;
+        });
+
+        // 🌟 KURŞUN GEÇİRMEZ ZARF AÇILIŞ MANTIĞI (Hatadan Arındırıldı) 🌟
+        const acilisEkrani = document.getElementById("acilisEkrani");
+        const zarfVideo = document.getElementById("zarfVideo");
+        const zarfYazisi = document.getElementById("zarfYazisi");
+        const arkaplanVideo = document.getElementById('arkaplanVideo');
+        let zarfAcildiMi = false;
+
+        acilisEkrani.addEventListener("click", function () {
+            if (zarfAcildiMi) return; 
+            zarfAcildiMi = true;
+            
+            zarfYazisi.style.opacity = "0";
+            
+            // Videoyu oynatmayı dene
+            const playPromise = zarfVideo.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Video sorunsuz oynarsa bitmesini bekle
+                }).catch(e => {
+                    console.log("Zarf video oynatılamadı, zorunlu geçiş yapılıyor:", e);
+                    siteyiAc();
+                });
+            }
+
+            // Müzik çalmayı dene
+            muzik.play().then(() => {
+                muzikButonu.classList.add("aktif");
+                muzikButonu.classList.add("caliyor");
+                caliyorMu = true;
+            }).catch(e => console.log("Müzik otomatik başlatılamadı"));
+        });
+
+        // Video normal şekilde bittiğinde siteyi aç
+        zarfVideo.addEventListener('ended', () => {
+            siteyiAc();
+        });
+
+        // Ana siteye geçişi sağlayan çekirdek fonksiyon
+        function siteyiAc() {
+            acilisEkrani.classList.add("gizli");
+            document.body.classList.remove("kilitli");
+            window.scrollTo(0, 0); 
+            
+            arkaplanVideo.play().catch(e => console.log("Arka plan video otomatik oynatılamadı"));
+        }
+
+        // GERİ SAYIM
+        const nisanTarihi = new Date("2027-03-06T19:00:00+03:00").getTime();
+        function geriSayimiGuncelle() {
+            const simdi = new Date().getTime();
+            const kalanSure = nisanTarihi - simdi;
+            if (kalanSure <= 0) {
+                document.getElementById("geriSayim").innerHTML = "<h2 style='grid-column: span 4; font-family: var(--font-baslik);'>Bugün nişanlanıyoruz! 🎉</h2>";
+                return;
+            }
+            document.getElementById("gun").textContent = Math.floor(kalanSure / (1000 * 60 * 60 * 24));
+            document.getElementById("saat").textContent = String(Math.floor((kalanSure % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+            document.getElementById("dakika").textContent = String(Math.floor((kalanSure % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+            document.getElementById("saniye").textContent = String(Math.floor((kalanSure % (1000 * 60)) / 1000)).padStart(2, "0");
+        }
+        geriSayimiGuncelle();
+        setInterval(geriSayimiGuncelle, 1000);
+
+        // FORM GÖNDERİMİ
+        const katilimFormu = document.getElementById("katilimFormu");
+        const formMesaji = document.getElementById("formMesaji");
+        const gonderButonu = document.getElementById("gonderButonu");
+
+        katilimFormu.addEventListener("submit", async function (olay) {
+            olay.preventDefault();
+            formMesaji.textContent = "";
+            formMesaji.className = "form-mesaji";
+            const eskiButonYazisi = gonderButonu.textContent;
+            gonderButonu.disabled = true;
+            gonderButonu.textContent = "Gönderiliyor...";
+
+            try {
+                const formVerileri = new FormData(katilimFormu);
+                const cevap = await fetch(katilimFormu.action, {
+                    method: katilimFormu.method,
+                    body: formVerileri,
+                    headers: { "Accept": "application/json" }
+                });
+
+                if (!cevap.ok) throw new Error("Form gönderilemedi.");
+
+                const isim = document.getElementById("isim").value.trim();
+                const durum = document.getElementById("durum").value;
+
+                formMesaji.textContent = (durum === "Evet, katılacağım") 
+                    ? "Teşekkürler " + isim + "! Cevabınız alındı. Sizi aramızda görmek için sabırsızlanıyoruz." 
+                    : "Teşekkürler " + isim + ". Cevabınız başarıyla alındı.";
+                
+                formMesaji.classList.add("basarili");
+                katilimFormu.reset();
+            } catch (hata) {
+                formMesaji.textContent = "Cevabınız gönderilemedi. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.";
+                formMesaji.classList.add("hatali");
+            } finally {
+                gonderButonu.disabled = false;
+                gonderButonu.textContent = eskiButonYazisi;
+            }
+        });
+    </script>
+</body>
+</html>
